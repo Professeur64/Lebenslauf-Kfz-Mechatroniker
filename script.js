@@ -528,7 +528,7 @@ document.getElementById('login-form').addEventListener('submit', function(e) {
                         text: message
                     }).then(response => {
                         alert('Ihre Nachricht wurde erfolgreich gesendet. Vielen Dank für Ihre Zeit und Ihr Interesse!');
-                        window.location.href = 'file:///Users/deutschland/Documents/Portfolio-book/index.html'; // توجيه المستخدم إلى الصفحة الرئيسية
+                        window.location.href = 'https://professeur64.github.io/Lebenslauf-Kfz-Mechatroniker/'; // توجيه المستخدم إلى الصفحة الرئيسية
                     }).catch(error => {
                         alert('Entschuldigung, beim Absenden des Formulars ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.');
                     });
