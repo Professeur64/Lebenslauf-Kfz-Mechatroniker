@@ -1,0 +1,1572 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    font-family: "Poppins", sans-serif;
+    transition: .4s;
+}
+
+:root{
+    --bg-color: #081b29;
+    --main-color: #00abf0;
+    --text-color: #333;
+    --second-text-color: #555;
+    --white-color: #fff;
+    --cover-color: linear-gradient(45deg, #00abf0, #006e9a);
+    --pages-color: linear-gradient(90deg, #fff, #ddd);
+    --border: .125rem solid #00abf0;
+    --box-shadow: 0 0 .6rem rgba(0, 0, 0, .2);
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--bg-color);
+    color: var(--text-color);
+    overflow: hidden;
+    overflow-y: auto; /* تفعيل السكرول */
+}
+
+
+
+
+p{
+    font-size:15px;
+}
+
+.wrapper{
+    position: relative;
+    width: 66rem;
+    height: 45rem;
+    padding: 2rem;
+    perspective: 250rem;
+    animation: show-animate 2s forwards;
+
+}
+
+@keyframes show-animate {
+  0%, 30% {
+    opacity: 0;
+    transform: rotate(-20deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+}
+
+
+.cover{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: var(--cover-color);
+    box-shadow: var(--box-shadow);
+    border-top-left-radius: .6rem;
+    border-bottom-left-radius: .6rem;
+    transform-origin: right;
+}
+
+.cover-left{
+    z-index: -1;
+}
+
+.cover.cover-right{
+  z-index: 100;
+  transition: transform 1s cubic-bezier(.645, .045, .355, 1);
+
+}
+
+
+
+.cover.cover-right.turn{
+    transform: rotateY(180deg);
+
+}
+
+.book{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    perspective: 250rem;
+}
+
+.downloadicon{
+  font-size: 1.3rem;
+}
+
+.book .book-page {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background: var(--pages-color);
+    box-shadow: 0 0 .6rem rgba(0, 0, 0, .1);
+    display: flex;
+    padding: 2rem;
+
+}
+
+.book-page.page-left{
+  box-shadow: -.6rem .6rem .6rem rgba(0, 0, 0, .1);
+}
+
+
+
+.pofile-page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.pofile-page img {
+    max-width: 200px;
+    border-radius: 50%;
+    border: .25rem solid var(--main-color);
+    margin-bottom: .8rem;
+    transition: .8s ease;
+
+}
+
+.pofile-page:hover img {
+  transform: scale(1.1);
+
+}
+
+.pofile-page h1 {
+    font-size: 2rem;
+    line-height: 1;
+
+}
+
+.pofile-page h3 {
+    font-size: 1,5rem;
+    color: #006e9a;
+
+}
+
+.pofile-page .social-media  {
+    margin: .6rem 0 .8rem; 
+}
+
+.pofile-page .social-media a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: transparent;
+    border: var(--border);
+    border-radius: 50%;
+    font-size: 1.3rem;
+    color: var(--main-color);
+    margin: 0 .2rem;
+    transition: .5s;
+
+}
+
+.pofile-page .social-media a:hover {
+    background: var(--main-color);
+    color: var(--white-color);
+    
+}
+
+.pofile-page p {
+    text-align: justify;
+    
+}
+
+.pofile-page .btn-box {
+    margin-top: 1.2rem;
+    
+}
+
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 9.5rem;
+    height: 3rem;
+    background: var(--main-color);
+    border: var(--border);
+    border-radius: .3rem;
+    font-size: 1rem;
+    color: var(--white-color);
+    font-weight: 500;
+    margin: 0 1rem;
+    transition: .5s;
+}
+
+.btn:hover {
+    background: transparent;
+    color: var(--main-color);
+    
+}
+
+.btn-box .btn:nth-child(2) {
+    background: transparent;
+    color: var(--main-color);
+    
+}
+
+.btn-box .btn:nth-child(2):hover {
+    background: var(--main-color);
+    color: var(--white-color);
+    
+}
+
+
+.book-page.page-right{
+    position: absolute;
+    right: 0;
+    transform-style: preserve-3d;
+    transform-origin: left;
+    transition: transform 1s cubic-bezier(.645, .045, .355, 1);
+    
+}
+
+.book-page.page-right.turn{
+    transform: rotateY(-180deg);
+}
+
+.book-page .page-front, 
+.book-page .page-back{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--pages-color);
+    padding: 1.5rem 2rem;
+    
+}
+
+.book-page .page-front{
+    transform: rotateY(0deg) translateZ(1px);
+    
+}
+
+.book-page .page-back{
+    transform: rotateY(180deg) translateZ(1px);
+    
+}
+
+
+.title{ 
+    text-align: center;
+    margin-bottom: 1rem;
+    
+}
+
+.workedu-box{
+    border-left: var(--border);
+
+}
+
+.workedu-box .workeduc-content{
+    position: relative;
+    padding-left: 1.6rem;
+    margin-bottom: 1rem;
+}
+
+
+.workedu-box .workeduc-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -0.65rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    background: var(--main-color);
+    border-radius: 50%;
+}
+
+/* group renault */
+
+
+.workedu-box .workeduc-contentrenault{
+    position: relative;
+    padding-left: 1.6rem;
+    margin-bottom: 1rem;
+}
+
+
+.workedu-box .workeduc-contentrenault::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -0.65rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    
+    border-radius: 50%;
+}
+
+.workeduc-contentrenault .tiri {
+    margin-left: 23px; 
+    margin-top: 10px; 
+    padding: 0;
+    
+}
+
+.workeduc-contentrenault .tiri {
+    margin-left: 23px; 
+    margin-top: 10px; 
+    padding: 0;
+    
+}
+
+/* group renault */
+
+
+.workeduc-content .year{
+    color: var(--main-color);
+
+}
+
+.workeduc-content .year i {
+    margin-right: .4rem;
+    
+}
+
+
+.workeduc-content .tiri {
+    margin-left: 23px; 
+    margin-top: 10px; 
+    padding: 0;
+    
+}
+
+.workeduc-content .tiri {
+    margin-left: 23px; 
+    margin-top: 10px; 
+    padding: 0;
+    
+}
+
+.number-page{
+    position: absolute;
+    bottom: 1.2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    
+}
+
+.nextprev-btn{
+    position: absolute;
+    bottom: .9rem;
+    right: 1.5rem;
+    width: 2rem;
+    height: 2ren;
+    cursor: pointer;
+    font-size: 2rem;
+    color: var(--second-text-color);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: .5s;
+}
+
+.nextprev-btn:hover{
+    color: var(--main-color);
+}
+
+.nextprev-btn.back{
+    left: 1.5rem;
+}
+
+.nextprev-btn:hover{
+    color: var(--main-color);
+}
+
+
+
+
+
+
+/* butten videoة */
+.btn-video{
+    
+    margin-bottom: 1rem;
+}
+
+button{
+    margin: 5px ;
+    width: 100%;
+    padding: 10px;
+    border: var(--main-color);
+    cursor: pointer;
+    background: var(--main-color);
+    border: var(--border);
+    border-radius: .3rem;
+    font-size: 1rem;
+    color: var(--white-color);
+    font-weight: 500;
+    margin: 0 1rem;
+    transition: .5s;
+}
+
+button:hover{
+    background: white;
+    color: var(--main-color);
+    
+}
+
+.trailer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, .9);
+  z-index: 10;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.trailer iframe {
+  max-width: 1000px;
+  outline: none;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  color: #fff;
+  font-size: 42px;
+  cursor: pointer;
+}
+
+@media (max-width: 901px){
+	.trailer video{
+		max-width: 90%;
+	}
+}
+
+/* butten videoة */
+
+
+
+/*STELLANTIS زر عرض الصور  */
+
+#showPopupButton {
+    width: 100%;
+    padding: 7px;
+    border: var(--main-color);
+    cursor: pointer;
+    background: var(--main-color);
+    border: var(--border);
+    border-radius: .3rem;
+    font-size: 1rem;
+    color: var(--white-color);
+    font-weight: 500;
+    transition: .5s;
+  }
+  
+  #showPopupButton:hover {
+    background: white;
+    color: var(--main-color);
+  }
+  
+  .popup {
+    display: none; /* إخفاء النافذة المنبثقة افتراضيًا */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* خلفية داكنة مع شفافية */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .popup-content {
+    display: flex;
+    flex-direction: column; /* ترتيب المحتوى عموديًا */
+    align-items: center; /* مركز المحتوى */
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .popup img {
+    max-width: 840px; /* تحديد أقصى عرض للصورة */
+    max-height: 650px; /* تحديد أقصى ارتفاع للصورة */
+    width: 100%; /* جعل الصورة تأخذ عرض النافذة */
+    height: auto; /* الحفاظ على نسبة العرض إلى الارتفاع */
+    object-fit: contain; /* الحفاظ على نسبة العرض إلى الارتفاع */
+    border-radius: 0.3rem;
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+  }
+  
+  .popup-buttons {
+    display: flex;
+    justify-content: space-between; /* توزيع الأزرار بين اليسار واليمين */
+    width: 100%;
+    margin-top: 10px; /* إضافة مساحة أعلى الأزرار */
+  }
+  
+  #prevButton{
+    padding: 10px 20px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 9.5rem;
+    height: 3rem;
+    background: #0087d7;
+    border: #0087d7;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    color: var(--white-color);
+    font-weight: 500;
+    margin: 0 1rem;
+    transition: 0.5s;
+    font-size: 14px;
+  }
+  
+  #prevButton:hover {
+    background: var(--main-color);
+    color: var(--white-color);
+  }
+  
+  #nextButton{
+    padding: 10px 20px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 9.5rem;
+    height: 3rem;
+    background: #0087d7;
+    border: #0087d7;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    color: var(--white-color);
+    font-weight: 500;
+    margin: 0 1rem;
+    transition: 0.5s;
+    font-size: 14px;
+  }
+  
+  #nextButton:hover {
+    background: var(--main-color);
+    color: var(--white-color);
+  }
+
+/* STELLANTIS زر عرض الصور  */
+
+
+/* OCP زر عرض الصور  */
+
+#showPopupButtonocp {
+    width: 100%;
+    padding: 7px;
+    border: var(--main-color);
+    cursor: pointer;
+    background: var(--main-color);
+    border: var(--border);
+    border-radius: .3rem;
+    font-size: 1rem;
+    color: var(--white-color);
+    font-weight: 500;
+    transition: .5s;
+    margin-bottom: 10px;
+  }
+  
+  #showPopupButtonocp:hover {
+    background: white;
+    color: var(--main-color);
+  }
+  
+  .popupocp {
+    display: none; /* إخفاء النافذة المنبثقة افتراضيًا */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* خلفية داكنة مع شفافية */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .popup-contentocp {
+    display: flex;
+    flex-direction: column; /* ترتيب المحتوى عموديًا */
+    align-items: center; /* مركز المحتوى */
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .popupocp img {
+    max-width: 840px; /* تحديد أقصى عرض للصورة */
+    max-height: 650px; /* تحديد أقصى ارتفاع للصورة */
+    width: 100%; /* جعل الصورة تأخذ عرض النافذة */
+    height: auto; /* الحفاظ على نسبة العرض إلى الارتفاع */
+    object-fit: contain; /* الحفاظ على نسبة العرض إلى الارتفاع */
+    border-radius: 0.3rem;
+  }
+  
+  .close-btnocp {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+  }
+  
+  .popup-buttonsocp {
+    display: flex;
+    justify-content: space-between; /* توزيع الأزرار بين اليسار واليمين */
+    width: 100%;
+    margin-top: 10px; /* إضافة مساحة أعلى الأزرار */
+  }
+  
+  #prevButtonocp{
+    padding: 10px 20px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 9.5rem;
+    height: 3rem;
+    background: #0087d7;
+    border: #0087d7;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    color: var(--white-color);
+    font-weight: 500;
+    margin: 0 1rem;
+    transition: 0.5s;
+    font-size: 14px;
+  }
+  
+  #prevButtonocp:hover {
+    background: var(--main-color);
+    color: var(--white-color);
+  }
+  
+  #nextButtonocp{
+    padding: 10px 20px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 9.5rem;
+    height: 3rem;
+    background: #0087d7;
+    border: #0087d7;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    color: var(--white-color);
+    font-weight: 500;
+    margin: 0 1rem;
+    transition: 0.5s;
+    font-size: 14px;
+  }
+  
+  #nextButtonocp:hover {
+    background: var(--main-color);
+    color: var(--white-color);
+  }
+
+/* OCP زر عرض الصور  */
+
+
+/* garage زر عرض الصور  */
+
+#showPopupButtongarage {
+    width: 100%;
+    padding: 7px;
+    border: var(--main-color);
+    cursor: pointer;
+    background: var(--main-color);
+    border: var(--border);
+    border-radius: .3rem;
+    font-size: 1rem;
+    color: var(--white-color);
+    font-weight: 500;
+    transition: .5s;
+    margin-bottom: 10px;
+  }
+  
+  #showPopupButtongarage:hover {
+    background: white;
+    color: var(--main-color);
+  }
+  
+  .popupgarage {
+    display: none; /* إخفاء النافذة المنبثقة افتراضيًا */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* خلفية داكنة مع شفافية */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .popup-contentgarage {
+    display: flex;
+    flex-direction: column; /* ترتيب المحتوى عموديًا */
+    align-items: center; /* مركز المحتوى */
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .popupgarage img {
+    max-width: 840px; /* تحديد أقصى عرض للصورة */
+    max-height: 650px; /* تحديد أقصى ارتفاع للصورة */
+    width: 100%; /* جعل الصورة تأخذ عرض النافذة */
+    height: auto; /* الحفاظ على نسبة العرض إلى الارتفاع */
+    object-fit: contain; /* الحفاظ على نسبة العرض إلى الارتفاع */
+    border-radius: 0.3rem;
+  }
+  
+  .close-btngarage {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+  }
+  
+  .popup-buttonsgarage {
+    display: flex;
+    justify-content: space-between; /* توزيع الأزرار بين اليسار واليمين */
+    width: 100%;
+    margin-top: 10px; /* إضافة مساحة أعلى الأزرار */
+  }
+  
+  #prevButtongarage{
+    padding: 10px 20px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 9.5rem;
+    height: 3rem;
+    background: #0087d7;
+    border: #0087d7;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    color: var(--white-color);
+    font-weight: 500;
+    margin: 0 1rem;
+    transition: 0.5s;
+    font-size: 14px;
+  }
+  
+  #prevButtongarage:hover {
+    background: var(--main-color);
+    color: var(--white-color);
+  }
+  
+  #nextButtongarage{
+    padding: 10px 20px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 9.5rem;
+    height: 3rem;
+    background: #0087d7;
+    border: #0087d7;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    color: var(--white-color);
+    font-weight: 500;
+    margin: 0 1rem;
+    transition: 0.5s;
+    font-size: 14px;
+  }
+  
+  #nextButtongarage:hover {
+    background: var(--main-color);
+    color: var(--white-color);
+  }
+
+/* garage زر عرض الصور  */
+
+
+/* ifmia زر عرض الصور  */
+
+#showPopupButtonifmia {
+  width: 100%;
+  padding: 7px;
+  border: var(--main-color);
+  cursor: pointer;
+  background: var(--main-color);
+  border: var(--border);
+  border-radius: .3rem;
+  font-size: 1rem;
+  color: var(--white-color);
+  font-weight: 500;
+  transition: .5s;
+  margin-bottom: 10px;
+}
+
+#showPopupButtonifmia:hover {
+  background: white;
+  color: var(--main-color);
+}
+
+.popupifmia {
+  display: none; /* إخفاء النافذة المنبثقة افتراضيًا */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* خلفية داكنة مع شفافية */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-contentifmia {
+  display: flex;
+  flex-direction: column; /* ترتيب المحتوى عموديًا */
+  align-items: center; /* مركز المحتوى */
+  text-align: center;
+  padding: 20px;
+}
+
+.popupifmia img {
+  max-width: 840px; /* تحديد أقصى عرض للصورة */
+  max-height: 650px; /* تحديد أقصى ارتفاع للصورة */
+  width: 100%; /* جعل الصورة تأخذ عرض النافذة */
+  height: auto; /* الحفاظ على نسبة العرض إلى الارتفاع */
+  object-fit: contain; /* الحفاظ على نسبة العرض إلى الارتفاع */
+  border-radius: 0.3rem;
+}
+
+.close-btnifmia {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.popup-buttonsifmia {
+  display: flex;
+  justify-content: space-between; /* توزيع الأزرار بين اليسار واليمين */
+  width: 100%;
+  margin-top: 10px; /* إضافة مساحة أعلى الأزرار */
+}
+
+#prevButtonifmia{
+  padding: 10px 20px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 9.5rem;
+  height: 3rem;
+  background: #0087d7;
+  border: #0087d7;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+  color: var(--white-color);
+  font-weight: 500;
+  margin: 0 1rem;
+  transition: 0.5s;
+  font-size: 14px;
+}
+
+#prevButtonifmia:hover {
+  background: var(--main-color);
+  color: var(--white-color);
+}
+
+#nextButtonifmia{
+  padding: 10px 20px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 9.5rem;
+  height: 3rem;
+  background: #0087d7;
+  border: #0087d7;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+  color: var(--white-color);
+  font-weight: 500;
+  margin: 0 1rem;
+  transition: 0.5s;
+  font-size: 14px;
+}
+
+#nextButtonifmia:hover {
+  background: var(--main-color);
+  color: var(--white-color);
+}
+
+/* ifmia زر عرض الصور  */
+
+
+
+/* ista زر عرض الصور  */
+
+#showPopupButtonista {
+  width: 100%;
+  padding: 7px;
+  border: var(--main-color);
+  cursor: pointer;
+  background: var(--main-color);
+  border: var(--border);
+  border-radius: .3rem;
+  font-size: 1rem;
+  color: var(--white-color);
+  font-weight: 500;
+  transition: .5s;
+  margin-bottom: 10px;
+}
+
+#showPopupButtonista:hover {
+  background: white;
+  color: var(--main-color);
+}
+
+.popupista {
+  display: none; /* إخفاء النافذة المنبثقة افتراضيًا */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* خلفية داكنة مع شفافية */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-contentista {
+  display: flex;
+  flex-direction: column; /* ترتيب المحتوى عموديًا */
+  align-items: center; /* مركز المحتوى */
+  text-align: center;
+  padding: 20px;
+}
+
+.popupista img {
+  max-width: 840px; /* تحديد أقصى عرض للصورة */
+  max-height: 650px; /* تحديد أقصى ارتفاع للصورة */
+  width: 100%; /* جعل الصورة تأخذ عرض النافذة */
+  height: auto; /* الحفاظ على نسبة العرض إلى الارتفاع */
+  object-fit: contain; /* الحفاظ على نسبة العرض إلى الارتفاع */
+  border-radius: 0.3rem;
+}
+
+.close-btnista {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.popup-buttonsista {
+  display: flex;
+  justify-content: space-between; /* توزيع الأزرار بين اليسار واليمين */
+  width: 100%;
+  margin-top: 10px; /* إضافة مساحة أعلى الأزرار */
+}
+
+#prevButtonista{
+  padding: 10px 20px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 9.5rem;
+  height: 3rem;
+  background: #0087d7;
+  border: #0087d7;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+  color: var(--white-color);
+  font-weight: 500;
+  margin: 0 1rem;
+  transition: 0.5s;
+  font-size: 14px;
+}
+
+#prevButtonista:hover {
+  background: var(--main-color);
+  color: var(--white-color);
+}
+
+#nextButtonista{
+  padding: 10px 20px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 9.5rem;
+  height: 3rem;
+  background: #0087d7;
+  border: #0087d7;
+  border-radius: 0.3rem;
+  font-size: 1rem;
+  color: var(--white-color);
+  font-weight: 500;
+  margin: 0 1rem;
+  transition: 0.5s;
+  font-size: 14px;
+}
+
+#nextButtonista:hover {
+  background: var(--main-color);
+  color: var(--white-color);
+}
+
+/* ista زر عرض الصور  */
+
+
+
+/* butten video Post */
+
+/* تنسيقات النافذة المنبثقة */
+.popuppost {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%; /* جعل عرض النافذة 90% من الشاشة */
+  margin-top: 80px;
+  align-items: center;
+  justify-content: center;
+  max-width: 1000px;
+  border-radius: 8px;
+  padding: 15px;
+  text-align: center;
+}
+
+/* تنسيق الفيديو ليكون متناسقاً مع عرض النافذة */
+.popuppost video {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* أزرار التحكم في الفيديو */
+.popuppost-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.popuppost-controls button {
+  padding: 10px 20px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 9.5rem;
+    height: 3rem;
+    background: #0087d7;
+    border: #0087d7;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    color: var(--white-color);
+    font-weight: 500;
+    margin: 0 1rem;
+    transition: 0.5s;
+    font-size: 14px;
+}
+
+.popuppost-controls button:hover {
+  background: var(--main-color);
+  color: var(--white-color);
+}
+
+/* تظليل الخلفية */
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+}
+
+/* الزر الذي يفتح النافذة */
+button.open-popuppost-btn {
+  margin: 5px ;
+    width: 100%;
+    padding: 10px;
+    border: #00abf0;
+    cursor: pointer;
+    background: #00abf0;
+    border: .125rem solid #00abf0;
+    border-radius: .3rem;
+    font-size: 1rem;
+    color: white;
+    font-weight: 500;
+    transition: .5s;
+}
+
+button.open-popuppost-btn:hover {
+  background: white;
+    color: #00abf0;
+}
+
+
+
+/* butten video Post */
+
+
+.back-profile{
+  position: absolute;
+  bottom: 1.2rem;
+  right: 2rem;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: var(--border);
+  border-radius: .3rem;
+  font-size: 1.1erm;
+  color: var(--main-color);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  transition: .5s;
+
+}
+
+.back-profile:hover {
+  background: var(--main-color);
+  color: var(--white-color);
+  
+
+}
+
+.back-profile p {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) scale(.5);
+  font-size: 1rem;
+  color: var(--main-color);
+  opacity: 0;
+  transition: .5s;
+
+}
+
+.back-profile:hover p {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+  top: -1.8rem;
+  
+
+}
+
+
+/*contact زر عرض الصور  */
+
+#showPopupButtoncontact {
+  background: transparent;
+    color: var(--main-color);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 9.5rem;
+    height: 3rem;
+    border: var(--border);
+    border-radius: .3rem;
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0 1rem;
+    transition: .5s;
+}
+
+#showPopupButtoncontact:hover {
+  background: var(--main-color);
+  color: var(--white-color);
+}
+
+.popupcontact {
+  display: none; /* إخفاء النافذة المنبثقة افتراضيًا */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9); /* خلفية داكنة مع شفافية */
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+
+.close-btncontact {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+
+
+/* popup contact زر عرض الصور   */
+
+
+.form {
+  width: 100%;
+  max-width: 820px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.contact-form {
+  background-color: #006e9a;
+  position: relative;
+}
+
+.circle {
+  border-radius: 50%;
+  background: linear-gradient(135deg, transparent 20%, #00abf0);
+  position: absolute;
+}
+
+.circle.one {
+  width: 130px;
+  height: 130px;
+  top: 130px;
+  right: -40px;
+}
+
+.circle.two {
+  width: 80px;
+  height: 80px;
+  top: 10px;
+  right: 30px;
+}
+
+.contact-form:before {
+  content: "";
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  background-color: #006e9a;
+  transform: rotate(45deg);
+  top: 50px;
+  left: -13px;
+}
+
+form {
+  padding: 2.3rem 2.2rem;
+  z-index: 10;
+  overflow: hidden;
+  position: relative;
+}
+
+.titlecontact {
+  color: #fff;
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1.3;
+  margin-bottom: 0.7rem;
+}
+
+.input-container {
+  position: relative;
+  margin: 1rem 0;
+}
+
+.input {
+  width: 100%;
+  outline: none;
+  border: 2px solid #fafafa;
+  background: none;
+  padding: 0.6rem 1.2rem;
+  color: #fff;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  border-radius: 25px;
+  transition: 0.3s;
+}
+
+textarea.input {
+  padding: 0.8rem 1.2rem;
+  min-height: 150px;
+  border-radius: 22px;
+  resize: none;
+  overflow-y: auto;
+}
+
+.input-container label {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  padding: 0 0.4rem;
+  color: #fafafa;
+  font-size: 0.9rem;
+  font-weight: 400;
+  pointer-events: none;
+  z-index: 1000;
+  transition: 0.5s;
+}
+
+.input-container.textarea label {
+  top: 1rem;
+  transform: translateY(0);
+}
+
+.btncontact {
+  padding: 0.6rem 1.3rem;
+  background-color: #fff;
+  border: 2px solid #fafafa;
+  font-size: 0.95rem;
+  color: #006e9a;
+  line-height: 1;
+  border-radius: 25px;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s;
+  margin: 0;
+}
+
+.btncontact:hover {
+  background-color: transparent;
+  color: #fff;
+}
+
+.input-container span {
+  position: absolute;
+  top: 0;
+  left: 25px;
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  padding: 0 0.4rem;
+  color: transparent;
+  pointer-events: none;
+  z-index: 500;
+}
+
+.input-container span:before,
+.input-container span:after {
+  content: "";
+  position: absolute;
+  width: 10%;
+  opacity: 0;
+  transition: 0.3s;
+  height: 5px;
+  background-color: #006e9a;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.input-container span:before {
+  left: 50%;
+}
+
+.input-container span:after {
+  right: 50%;
+}
+
+.input-container.focus label {
+  top: 0;
+  transform: translateY(-50%);
+  left: 25px;
+  font-size: 0.8rem;
+}
+
+.input-container.focus span:before,
+.input-container.focus span:after {
+  width: 50%;
+  opacity: 1;
+}
+
+.contact-info {
+  padding: 2.3rem 2.2rem;
+  position: relative;
+}
+
+.contact-info .titlecontact {
+  color: #006e9a;
+}
+
+.text {
+  color: #333;
+  margin: 1.5rem 0 2rem 0;
+}
+
+.information {
+  display: flex;
+  color: #555;
+  margin: 0.7rem 0;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+.icon {
+  width: 28px;
+  margin-right: 0.7rem;
+}
+
+.social-mediacontact {
+  padding: 2rem 0 0 0;
+}
+
+.social-mediacontact p {
+  color: #333;
+}
+
+.social-icons {
+  display: flex;
+  margin-top: 0.5rem;
+}
+
+.social-icons a {
+  width: 35px;
+  height: 35px;
+  border-radius: 5px;
+  background: linear-gradient(45deg, #00abf0, #006e9a);
+  color: #fff;
+  text-align: center;
+  line-height: 35px;
+  margin-right: 0.5rem;
+  transition: 0.3s;
+}
+
+.social-icons a:hover {
+  transform: scale(1.05);
+}
+
+.contact-info:before {
+  content: "";
+  position: absolute;
+  width: 110px;
+  height: 100px;
+  border: 22px solid #006e9a;
+  border-radius: 50%;
+  bottom: -77px;
+  right: 50px;
+  opacity: 0.3;
+}
+
+
+/*contact زر عرض الصور  */
+
+
+/* إخفاء كل المحتوى على الشاشات الصغيرة */
+@media (max-width: 1020px) {
+    .wrapper {
+        display: none;
+    }
+
+    .mobile-message {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      user-select: none;
+      width: 100%;
+      border-radius: 10px; /* زوايا دائرية */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* ظل خفيف */
+      padding: 20px; /* حشو داخلي */
+      text-align: center; /* محاذاة النص في المنتصف */
+      font-family: 'Arial', sans-serif;
+      color: #333; /* لون النص */
+      justify-content: center;
+      min-height: 100vh;
+      max-height: 80vh; /* الحد الأقصى للارتفاع */
+      overflow-y: auto; /* تفعيل السكرول */
+    }
+
+    .message-card {
+        background-color: #fff;
+        padding: 5px;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        user-select: none;
+        opacity: 0; /* يبدأ غير مرئي */
+        transform: scale(0.8); /* يبدأ صغير الحجم */
+        animation: fadeInScale 0.5s forwards; 
+        
+    }
+
+    .message-card .message-imag{
+      width: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    
+    .message-card .message-title{
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #333; 
+      margin-top: 7px;
+      padding-top: 20px;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    .message-card .btn{
+      margin-top: 25px;
+      margin-bottom: 10px;
+      border-radius: 30px;
+    }
+
+
+    
+
+    /* أنيميشن fadeInScale */
+    @keyframes fadeInScale {
+        0% {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+}
+
+/* إخفاء الرسالة على الشاشات الكبيرة */
+@media (min-width: 1020px) {
+    .mobile-message {
+        display: none;
+    }
+}
+
