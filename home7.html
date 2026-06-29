@@ -1,0 +1,1789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atelier des Portraits | Luxury Digital Portrait Studio</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- DESIGN SYSTEM & CSS VARIABLES --- */
+        :root {
+            --bg-color: #FAF8F5;
+            --primary-color: #111111;
+            --secondary-color: #F5F2EB;
+            --accent-gold: #B8945A;
+            --border-color: #E5DED2;
+            --text-muted: #666666;
+            
+            --font-title: 'Cormorant Garamond', serif;
+            --font-body: 'Poppins', sans-serif;
+            
+            --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            --transition-slow: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* --- RESET & BASE STYLES --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--primary-color);
+            font-family: var(--font-body);
+            font-weight: 300;
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3, h4 {
+            font-family: var(--font-title);
+            font-weight: 400;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        /* --- REUSABLE UTILITIES --- */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 20px; }
+        }
+
+        .section-padding {
+            padding: 140px 0;
+        }
+
+        @media (max-width: 768px) {
+            .section-padding { padding: 80px 0; }
+        }
+
+        .text-center { text-align: center; }
+        
+        .section-header {
+            max-width: 700px;
+            margin: 0 auto 80px auto;
+        }
+
+        .section-header .subtitle {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .section-header h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .section-header h2 { font-size: 2.5rem; }
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-block;
+            padding: 16px 36px;
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 400;
+            border: 1px solid var(--primary-color);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            position: relative;
+            background: transparent;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: #ffffff;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-gold);
+            border-color: var(--accent-gold);
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        /* --- ANIMATION HELPER CLASSES (Scroll Reveal) --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* --- STICKY HEADER --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition-smooth);
+            border-bottom: 1px solid transparent;
+            padding: 25px 0;
+        }
+
+        header.scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-family: var(--font-title);
+            font-size: 1.8rem;
+            letter-spacing: 0.05em;
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        nav ul a {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        nav ul a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--accent-gold);
+            transition: var(--transition-smooth);
+        }
+
+        nav ul a:hover::after {
+            width: 100%;
+        }
+
+        .header-actions .btn {
+            padding: 10px 24px;
+            font-size: 0.7rem;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 992px) {
+            nav, .header-actions { display: none; }
+            .menu-toggle { display: block; }
+        }
+
+        /* Mobile Nav Overlays */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 400px;
+            height: 100vh;
+            background-color: #ffffff;
+            z-index: 1001;
+            padding: 80px 40px;
+            box-shadow: -10px 0 30px rgba(0,0,0,0.05);
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .mobile-nav.active { right: 0; }
+        .mobile-nav ul { list-style: none; display: flex; flex-direction: column; gap: 25px; }
+        .mobile-nav ul a { font-size: 1.2rem; font-family: var(--font-title); }
+        .mobile-nav-close { position: absolute; top: 25px; right: 40px; font-size: 1.5rem; cursor: pointer; }
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.2);
+            z-index: 1000;
+            display: none;
+        }
+        .mobile-nav-overlay.active { display: block; }
+
+        /* --- HERO SECTION --- */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 100px;
+            overflow: hidden;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        @media (max-width: 992px) {
+            .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: luxuryFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 3rem; }
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            max-width: 500px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: luxuryFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+        }
+
+        @media (max-width: 992px) {
+            .hero-content p { margin-left: auto; margin-right: auto; }
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: luxuryFadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+        }
+
+        @media (max-width: 992px) {
+            .hero-buttons { justify-content: center; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-buttons { flex-direction: column; gap: 15px; }
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            opacity: 0;
+            transform: scale(0.95);
+            animation: luxuryScaleUp 1.6s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+        }
+
+        .hero-frame {
+            background-color: #ffffff;
+            padding: 25px;
+            box-shadow: 0 30px 70px rgba(0,0,0,0.07);
+            border: 1px solid var(--border-color);
+            transition: var(--transition-slow);
+        }
+
+        .hero-frame:hover {
+            transform: translateY(-10px) rotate(0.5deg);
+        }
+
+        .hero-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+            filter: grayscale(15%);
+        }
+
+        @keyframes luxuryFadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes luxuryScaleUp {
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* --- BEFORE & AFTER SLIDER --- */
+        .slider-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            height: 550px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+            border: 12px solid #ffffff;
+        }
+
+        @media (max-width: 768px) {
+            .slider-wrapper { height: 350px; }
+        }
+
+        .slider-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slider-background {
+            background-image: url('1 - Portrait Classic.jpg');
+        }
+
+        .slider-foreground {
+            background-image: url('Original.jpg');
+            width: 50%;
+        }
+
+        .slider-handle {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 2px;
+            background-color: #ffffff;
+            cursor: ew-resize;
+            z-index: 10;
+        }
+
+        .slider-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 44px;
+            height: 44px;
+            background-color: var(--primary-color);
+            border: 1px solid var(--accent-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 0.8rem;
+            pointer-events: none;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            transition: background-color 0.3s;
+        }
+
+        .slider-wrapper:hover .slider-button {
+            background-color: var(--accent-gold);
+        }
+
+        .slider-label {
+            position: absolute;
+            bottom: 20px;
+            background: rgba(17, 17, 17, 0.7);
+            color: #ffffff;
+            padding: 6px 16px;
+            font-family: var(--font-body);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            pointer-events: none;
+            backdrop-filter: blur(5px);
+        }
+
+        .label-before { left: 20px; }
+        .label-after { right: 20px; }
+
+        /* --- MEET THE ARTIST --- */
+        .artist-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        @media (max-width: 992px) {
+            .artist-grid { grid-template-columns: 1fr; gap: 40px; }
+        }
+
+        .artist-image img {
+            width: 100%;
+            height: auto;
+            border: 1px solid var(--border-color);
+            filter: sepia(10%);
+        }
+
+        .artist-content h3 {
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+        }
+
+        .artist-content p {
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        /* --- PORTRAIT COLLECTIONS --- */
+        .collections-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        @media (max-width: 992px) {
+            .collections-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 600px) {
+            .collections-grid { grid-template-columns: 1fr; }
+        }
+
+        /* 5 items request: let's make the last rows adapt neatly */
+        .collection-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            transition: var(--transition-smooth);
+        }
+
+        .collection-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+        }
+
+        .collection-img-box {
+            overflow: hidden;
+            margin-bottom: 25px;
+            position: relative;
+            aspect-ratio: 4/5;
+            background-color: var(--secondary-color);
+        }
+
+        .collection-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-slow);
+        }
+
+        .collection-card:hover .collection-img-box img {
+            transform: scale(1.06);
+        }
+
+        .collection-card h4 {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        .collection-card p {
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+        }
+
+        .collection-card .btn {
+            padding: 10px 20px;
+            font-size: 0.7rem;
+            width: 100%;
+        }
+
+        /* --- HOW IT WORKS (TIMELINE) --- */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 1px;
+            background-color: var(--border-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -0.5px;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::after { left: 31px; }
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            right: -6px;
+            background-color: var(--accent-gold);
+            top: 24px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item.left { left: 0; text-align: right; }
+        .timeline-item.right { left: 50%; }
+
+        .timeline-item.right::after { left: -6px; }
+
+        @media (max-width: 768px) {
+            .timeline-item { width: 100%; padding-left: 70px; padding-right: 20px; text-align: left !important; }
+            .timeline-item.right { left: 0; }
+            .timeline-item::after { left: 25px !important; top: 26px; }
+        }
+
+        .timeline-content {
+            padding: 10px 0;
+            position: relative;
+        }
+
+        .timeline-number {
+            font-family: var(--font-title);
+            font-size: 2rem;
+            color: var(--border-color);
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .timeline-content h4 {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            font-family: var(--font-body);
+            font-weight: 400;
+        }
+
+        /* --- WHY CHOOSE US --- */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        @media (max-width: 1024px) {
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 500px) {
+            .features-grid { grid-template-columns: 1fr; }
+        }
+
+        .feature-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            padding: 40px 30px;
+            text-align: center;
+            transition: var(--transition-smooth);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
+        }
+
+        .feature-icon {
+            font-size: 1.8rem;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h4 {
+            font-family: var(--font-body);
+            font-weight: 400;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 10px;
+        }
+
+        /* --- PRICING & FRAMES --- */
+        .pricing-section-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        @media (max-width: 992px) {
+            .pricing-section-grid { grid-template-columns: 1fr; gap: 60px; }
+        }
+
+        .pricing-card {
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            padding: 50px 40px;
+            position: relative;
+        }
+
+        .pricing-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+        }
+
+        .pricing-price {
+            font-family: var(--font-title);
+            font-size: 4rem;
+            color: var(--primary-color);
+            margin: 15px 0 35px 0;
+            line-height: 1;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .pricing-features li {
+            padding: 14px 0;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.95rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .pricing-features li span {
+            color: var(--primary-color);
+            font-weight: 400;
+        }
+
+        .frames-container h3 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .frames-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 480px) {
+            .frames-grid { grid-template-columns: 1fr; }
+        }
+
+        .frame-card {
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            text-align: center;
+        }
+
+        .frame-mockup {
+            background-color: var(--secondary-color);
+            aspect-ratio: 1/1;
+            margin-bottom: 15px;
+            border: 8px solid #111; /* fallback representation */
+        }
+
+        .frame-card:nth-child(2) .frame-mockup { border-color: #d7a15c; } /* Oak color representation */
+        .frame-card:nth-child(3) .frame-mockup { border-color: #5c4033; } /* Walnut color representation */
+
+        .frame-card h4 {
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* --- MASONRY GALLERY --- */
+        .gallery-masonry {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 992px) {
+            .gallery-masonry { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 3/4;
+            border: 1px solid var(--border-color);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-slow);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* --- TESTIMONIAL CAROUSEL --- */
+        .carousel-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            padding: 0 20px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .review-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            padding: 50px 40px;
+        }
+
+        .review-stars {
+            color: var(--accent-gold);
+            font-size: 0.8rem;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .review-text {
+            font-family: var(--font-title);
+            font-size: 1.8rem;
+            line-height: 1.4;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .review-author {
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .carousel-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--border-color);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .carousel-dot.active {
+            background-color: var(--primary-color);
+            transform: scale(1.2);
+        }
+
+        /* --- FAQ ACCORDION --- */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: 25px 0;
+        }
+
+        .faq-trigger {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            width: 100%;
+            background: none;
+            border: none;
+            text-align: left;
+            color: var(--primary-color);
+        }
+
+        .faq-trigger h3 {
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+
+        .faq-icon {
+            font-size: 0.8rem;
+            transition: var(--transition-smooth);
+        }
+
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .faq-content p {
+            padding-top: 15px;
+            font-size: 0.95rem;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        /* --- ORDER FORM SECTION --- */
+        .order-form-wrapper {
+            max-width: 750px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            padding: 60px 50px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.03);
+        }
+
+        @media (max-width: 768px) {
+            .order-form-wrapper { padding: 40px 20px; }
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 600px) {
+            .form-grid { grid-template-columns: 1fr; }
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        @media (max-width: 600px) {
+            .form-group.full-width { grid-column: span 1; }
+        }
+
+        .form-group label {
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--primary-color);
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            padding: 14px 18px;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            transition: var(--transition-smooth);
+            outline: none;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: var(--accent-gold);
+            background-color: #ffffff;
+        }
+
+        .file-upload-btn {
+            border: 1px dashed var(--accent-gold);
+            background-color: var(--secondary-color);
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .file-upload-btn:hover {
+            background-color: #ffffff;
+        }
+
+        .file-upload-btn i {
+            color: var(--accent-gold);
+            margin-bottom: 8px;
+            display: block;
+            font-size: 1.2rem;
+        }
+
+        .file-upload-btn span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* --- FLOATING WHATSAPP --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 55px;
+            height: 55px;
+            background-color: var(--primary-color);
+            border: 1px solid var(--accent-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-size: 1.4rem;
+            z-index: 999;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            transition: var(--transition-smooth);
+        }
+
+        .whatsapp-float:hover {
+            background-color: var(--accent-gold);
+            transform: translateY(-5px);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 60px 0;
+            background-color: #ffffff;
+        }
+
+        .footer-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .footer-grid { flex-direction: column; text-align: center; }
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+    <header id="main-header">
+        <div class="container">
+            <a href="#" class="logo">ATELIER DES PORTRAITS</a>
+            <nav>
+                <ul>
+                    <li><a href="#hero">Gallery</a></li>
+                    <li><a href="#collections">Collections</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#reviews">Reviews</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="#order" class="btn btn-primary">Order Portrait</a>
+            </div>
+            <div class="menu-toggle" id="mobile-menu-trigger">
+                <i class="fa-solid degeneration fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <div class="mobile-nav-overlay" id="mobile-overlay"></div>
+    <div class="mobile-nav" id="mobile-navigation">
+        <div class="mobile-nav-close" id="mobile-close"><i class="fa-solid fa-xmark"></i></div>
+        <ul>
+            <li><a href="#hero" class="mobile-link">Gallery</a></li>
+            <li><a href="#collections" class="mobile-link">Collections</a></li>
+            <li><a href="#how-it-works" class="mobile-link">How It Works</a></li>
+            <li><a href="#reviews" class="mobile-link">Reviews</a></li>
+            <li><a href="#faq" class="mobile-link">FAQ</a></li>
+        </ul>
+        <a href="#order" class="btn btn-primary mobile-link" style="margin-top: 20px;">Order Portrait</a>
+    </div>
+
+    <section id="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <h1>Every Portrait Tells A Story Worth Remembering</h1>
+                    <p>Transform your cherished photographic memories into fine digital museum-quality artwork, meticulously master crafted by hand and presented in luxury luxury wooden frames.</p>
+                    <div class="hero-buttons">
+                        <a href="#order" class="btn btn-primary">Order Your Portrait</a>
+                        <a href="#collections" class="btn btn-secondary">Explore Collections</a>
+                    </div>
+                </div>
+                <div class="hero-image-wrapper">
+                    <div class="hero-frame">
+                        <img src="LivingRoomMockup.jpg" alt="Luxury framed portrait masterfully integrated inside a contemporary living room space">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="comparison" class="section-padding" style="background-color: var(--secondary-color);">
+        <div class="container">
+            <div class="section-header text-center reveal">
+                <span class="subtitle">The Metamorphosis</span>
+                <h2>See Your Memory Become Timeless Art</h2>
+                <p>Slide to witness the emotional journey from an ordinary personal photo to a profound, masterfully refined studio portrait.</p>
+            </div>
+            
+            <div class="slider-wrapper reveal">
+                <div class="slider-img slider-background"></div>
+                <div class="slider-img slider-foreground"></div>
+                <div class="slider-handle">
+                    <div class="slider-button">
+                        <i class="fa-solid fa-arrows-left-right"></i>
+                    </div>
+                </div>
+                <span class="slider-label label-before">Original Photo</span>
+                <span class="slider-label label-after">Finished Artwork</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="meet-the-artist" class="section-padding">
+        <div class="container">
+            <div class="artist-grid">
+                <div class="artist-image reveal-left">
+                    <img src="ArtistDrawingTablet.jpg" alt="Master digital artist delicately sketching intricate portrait fine details utilizing a premium graphics drawing tablet">
+                </div>
+                <div class="artist-content reveal-right">
+                    <span class="subtitle" style="text-transform: uppercase; letter-spacing: 0.2em; color: var(--accent-gold); font-size: 0.75rem; display: block; margin-bottom: 15px;">The Studio Atelier</span>
+                    <h3>Where Art Meets Emotion</h3>
+                    <p>Welcome to an exclusive space dedicated to transforming transient milestones into classic, permanent visual legacy objects. Every piece begins with your authentic photo, which serves as the emotional framework.</p>
+                    <p>Inside our fine digital art studio, I personally spend hours guiding a premium drawing tablet stylus across the canvas—redefining lines, accentuating expressive light, and carefully crafting true aesthetic depth without using any fast automated shortcuts or basic applications. It is an intricate, hand-rendered curation devoted strictly to emotional storytelling.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="collections" class="section-padding" style="background-color: #ffffff;">
+        <div class="container">
+            <div class="section-header text-center reveal">
+                <span class="subtitle">Curated Mediums</span>
+                <h2>The Studio Collections</h2>
+                <p>Select the distinct aesthetic technique that speaks intimately to your personal narrative styling.</p>
+            </div>
+
+            <div class="collections-grid">
+                <div class="collection-card reveal">
+                    <div class="collection-img-box">
+                        <img src="1 - Portrait Classic.jpg" alt="Portrait Classic style preview">
+                    </div>
+                    <h4>Classic Fine Art</h4>
+                    <p>Clean, beautifully tailored editorial brushstrokes emphasizing timeless realistic portrait aesthetics.</p>
+                    <a href="#order" class="btn btn-secondary">View Style</a>
+                </div>
+                <div class="collection-card reveal" style="transition-delay: 0.1s;">
+                    <div class="collection-img-box">
+                        <img src="2 - Watercolor Portrait.jpg" alt="Watercolor Portrait style preview">
+                    </div>
+                    <h4>Ethereal Watercolor</h4>
+                    <p>Fluid transitions, delicate ambient washes, and elegant dreamy textures highlighting emotional soft tones.</p>
+                    <a href="#order" class="btn btn-secondary">View Style</a>
+                </div>
+                <div class="collection-card reveal" style="transition-delay: 0.2s;">
+                    <div class="collection-img-box">
+                        <img src="3 - Oil Painting Portrait.jpg" alt="Oil Painting Portrait style preview">
+                    </div>
+                    <h4>Heritage Oil Painting</h4>
+                    <p>Rich, dramatic, heavily layered strokes creating an imposing classical museum presence.</p>
+                    <a href="#order" class="btn btn-secondary">View Style</a>
+                </div>
+                <div class="collection-card reveal">
+                    <div class="collection-img-box">
+                        <img src="4 - Charcoal Portrait.jpg" alt="Charcoal Portrait style preview">
+                    </div>
+                    <h4>Monochrome Charcoal</h4>
+                    <p>Deep rich blacks, high-contrast emotional value structuring, and stunning raw artistic texture.</p>
+                    <a href="#order" class="btn btn-secondary">View Style</a>
+                </div>
+                <div class="collection-card reveal" style="transition-delay: 0.1s;">
+                    <div class="collection-img-box">
+                        <img src="5 - Colored Pencil Portrai.jpg" alt="Colored Pencil Portrait style preview">
+                    </div>
+                    <h4>Detailed Prism Pencil</h4>
+                    <p>Intricate, finely woven crosshatch rendering giving life to magnificent close-up precision work.</p>
+                    <a href="#order" class="btn btn-secondary">View Style</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works" class="section-padding">
+        <div class="container">
+            <div class="section-header text-center reveal">
+                <span class="subtitle">The Creation Path</span>
+                <h2>The Journey of Your Masterpiece</h2>
+                <p>An uncompromising commitment to precision, fine framing execution, and seamless boutique delivery.</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item left reveal">
+                    <div class="timeline-content">
+                        <span class="timeline-number">01</span>
+                        <h4>Upload Your Photo</h4>
+                        <p>Share your favorite digital picture memory through our streamlined premium checkout portal sequence below.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right reveal">
+                    <div class="timeline-content">
+                        <span class="timeline-number">02</span>
+                        <h4>Choose Your Favorite Style</h4>
+                        <p>Select from our five exclusive fine digital illustration mediums to suit your home ambiance layout perfectly.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left reveal">
+                    <div class="timeline-content">
+                        <span class="timeline-number">03</span>
+                        <h4>We Carefully Create Your Portrait</h4>
+                        <p>The studio artist works by hand with meticulous tablet rendering to capture individual distinct character and emotion.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right reveal">
+                    <div class="timeline-content">
+                        <span class="timeline-number">04</span>
+                        <h4>Premium Printing</h4>
+                        <p>The chosen visual is rendered using top-tier long-lasting fine-art inks onto deep texture heavy cotton fiber museum paper.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left reveal">
+                    <div class="timeline-content">
+                        <span class="timeline-number">05</span>
+                        <h4>Luxury Framing</h4>
+                        <p>Our workshop team encloses the artwork within hand-selected, expertly joined natural solid wood profile casings.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right reveal">
+                    <div class="timeline-content">
+                        <span class="timeline-number">06</span>
+                        <h4>Secure Packaging</h4>
+                        <p>Each heavy display frame bundle receives specialized protective linen corner layering inside bespoke studio boxes.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left reveal">
+                    <div class="timeline-content">
+                        <span class="timeline-number">07</span>
+                        <h4>Delivery Across Morocco</h4>
+                        <p>Your luxury package safely travels with premier transport couriers directly to your physical doorstep placement anywhere in Morocco.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="why-choose-us" class="section-padding" style="background-color: var(--secondary-color);">
+        <div class="container">
+            <div class="section-header text-center reveal">
+                <span class="subtitle">Uncompromising Standards</span>
+                <h2>The Studio Distinction</h2>
+                <p>We redefine modern gift-giving through museum-grade specifications and dedicated artistic luxury service protocols.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card reveal">
+                    <i class="fa-solid fa-print feature-icon"></i>
+                    <h4>Museum Quality Printing</h4>
+                    <p>Rich pigment ink depth and high resolution paper weights that will not fade over generations.</p>
+                </div>
+                <div class="feature-card reveal" style="transition-delay: 0.1s;">
+                    <i class="fa-solid fa-tree feature-icon"></i>
+                    <h4>Luxury Wooden Frames</h4>
+                    <p>Authentic robust timber selections tailored to match high-end domestic wall galleries perfectly.</p>
+                </div>
+                <div class="feature-card reveal" style="transition-delay: 0.2s;">
+                    <i class="fa-solid fa-palette feature-icon"></i>
+                    <h4>Professional Artwork</h4>
+                    <p>Deliberately custom rendered by an accomplished, highly trained artisan, honoring true facial expressions.</p>
+                </div>
+                <div class="feature-card reveal" style="transition-delay: 0.3s;">
+                    <i class="fa-solid fa-box-open feature-icon"></i>
+                    <h4>Premium Packaging</h4>
+                    <p>Sealed carefully in elegant protective presentation wraps designed to impress upon opening.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <i class="fa-solid fa-truck-fast feature-icon"></i>
+                    <h4>Fast Delivery</h4>
+                    <p>Safe priority shipping management ensures rapid processing and safe transport across regions.</p>
+                </div>
+                <div class="feature-card reveal" style="transition-delay: 0.1s;">
+                    <i class="fa-solid fa-hand-holding-dollar feature-icon"></i>
+                    <h4>Cash On Delivery</h4>
+                    <p>Complete peace of mind. Review your luxury external packaging bundle before committing payment.</p>
+                </div>
+                <div class="feature-card reveal" style="transition-delay: 0.2s;">
+                    <i class="fa-solid fa-award feature-icon"></i>
+                    <h4>Customer Satisfaction</h4>
+                    <p>Continuous refinement adjustments until you feel the final artwork genuinely matches your expectation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="section-padding" style="background-color: #ffffff;">
+        <div class="container">
+            <div class="pricing-section-grid">
+                
+                <div class="pricing-card reveal-left">
+                    <span class="pricing-label">Bespoke Commission Commissions</span>
+                    <div class="pricing-price">699 MAD</div>
+                    
+                    <ul class="pricing-features">
+                        <li>Studio Medium Selection: <span>Hand-Drawn Portrait</span></li>
+                        <li>Print Medium Specifications: <span>Museum Rag Fine Art Cotton</span></li>
+                        <li>Structural Housing: <span>Luxury Wooden Frame Bundle</span></li>
+                        <li>Outer Casing Assembly: <span>Premium protective wrap</span></li>
+                        <li>Moroccan Logistical Shipping: <span>Free Priority Courier</span></li>
+                        <li>Financial Protection: <span>Cash on Delivery Convenience</span></li>
+                    </ul>
+
+                    <a href="#order" class="btn btn-primary" style="width: 100%;">Order Your Portrait</a>
+                </div>
+
+                <div class="frames-container reveal-right">
+                    <span class="subtitle">Bespoke Frameworks</span>
+                    <h3>The Premium Frame Selections</h3>
+                    <p style="margin-bottom: 30px;">Every commissioned artwork requires an equally dignified perimeter presentation housing. Choose from three premium wooden finishes constructed carefully to stand the test of time.</p>
+                    
+                    <div class="frames-grid">
+                        <div class="frame-card">
+                            <div class="frame-mockup" style="background-color: #111;"></div>
+                            <h4>Classic Black</h4>
+                        </div>
+                        <div class="frame-card">
+                            <div class="frame-mockup" style="background-color: #dfb982;"></div>
+                            <h4>Natural Oak</h4>
+                        </div>
+                        <div class="frame-card">
+                            <div class="frame-mockup" style="background-color: #5c3e21;"></div>
+                            <h4>Luxury Walnut</h4>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="section-padding" style="background-color: var(--secondary-color);">
+        <div class="container">
+            <div class="section-header text-center reveal">
+                <span class="subtitle">Atelier Highlights</span>
+                <h2>The Gallery Collection</h2>
+                <p>An intimate glance behind the curtains at the physical execution, production precision, and elegant interior placement spaces.</p>
+            </div>
+
+            <div class="gallery-masonry">
+                <div class="gallery-item reveal">
+                    <img src="Gallery1.jpg" alt="Luxury framed digital portrait situated elegantly on a premium minimalist console layout">
+                </div>
+                <div class="gallery-item reveal" style="transition-delay: 0.1s;">
+                    <img src="Gallery2.jpg" alt="Detailed studio execution view of a high-end textured paper layout">
+                </div>
+                <div class="gallery-item reveal" style="transition-delay: 0.2s;">
+                    <img src="Gallery3.jpg" alt="Carefully wrapping fine wooden art frames using custom tailored linen layers">
+                </div>
+                <div class="gallery-item reveal" style="transition-delay: 0.3s;">
+                    <img src="Gallery4.jpg" alt="A high resolution digital portrait piece showcasing fine emotional line clarity details">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews" class="section-padding" style="background-color: #ffffff;">
+        <div class="container">
+            <div class="section-header text-center reveal">
+                <span class="subtitle">Collector Sentiments</span>
+                <h2>Endorsements from the Connoisseurs</h2>
+            </div>
+
+            <div class="carousel-container reveal">
+                <div class="carousel-track" id="review-track">
+                    
+                    <div class="carousel-slide">
+                        <div class="review-card">
+                            <div class="review-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="review-text">"When I unpacked the premium wooden frame, I couldn't hold back my tears. The brushstrokes felt alive, capturing my late grandfather's presence exactly as we remembered him."</p>
+                            <span class="review-author">— Yasmine B., Casablanca (Customer1.jpg)</span>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <div class="review-card">
+                            <div class="review-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="review-text">"The minimalist styling lines match our European interior philosophy flawlessly. It is an amazing talking point whenever we host guests in our salon."</p>
+                            <span class="review-author">— Amine T., Rabat (Customer2.jpg)</span>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <div class="review-card">
+                            <div class="review-stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="review-text">"Uncompromising quality from customer care to packaging. You can instantly feel that a real human hand crafted this piece with absolute devotion."</p>
+                            <span class="review-author">— Sofia M., Marrakech (Customer3.jpg)</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="carousel-nav" id="carousel-dots-container">
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="section-padding" style="background-color: var(--secondary-color);">
+        <div class="container">
+            <div class="section-header text-center reveal">
+                <span class="subtitle">Inquiries & Clarifications</span>
+                <h2>Frequently Asked Questions</h2>
+            </div>
+
+            <div class="faq-container">
+                <div class="faq-item reveal">
+                    <button class="faq-trigger">
+                        <h3>What quality of photograph works best for commissioning?</h3>
+                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-content">
+                        <p>We accept standard mobile telephone images or old archival scans. The finer the illumination details in your picture source, the more depth our portrait painter can draw into your custom artwork design canvas.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <button class="faq-trigger">
+                        <h3>How long does the handmade refinement phase require?</h3>
+                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-content">
+                        <p>Because each portrait line is meticulously illustrated by hand onto high-end digital drawing displays, please expect 3 to 5 business days for our studio production steps before printing and framing occur.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <button class="faq-trigger">
+                        <h3>Is shipping and Cash on Delivery supported across all of Morocco?</h3>
+                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-content">
+                        <p>Yes, absolutely. We work with specialized luxury logistics networks ensuring delivery across all primary cities within Morocco. You verify the package externally before hand-delivering payment upon arrival.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item reveal">
+                    <button class="faq-trigger">
+                        <h3>Can I request modifications before final printing execution?</h3>
+                        <i class="fa-solid fa-chevron-down faq-icon"></i>
+                    </button>
+                    <div class="faq-content">
+                        <p>Your absolute satisfaction is our studio's foundational core principle. We maintain dialogue access via WhatsApp to confirm your satisfaction with style brush tones before finalizing real ink implementation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="order" class="section-padding" style="background-color: #ffffff;">
+        <div class="container">
+            <div class="section-header text-center reveal">
+                <span class="subtitle">Commission Form</span>
+                <h2>Initiate Your Personal Commission</h2>
+                <p>Fill out the curated form specifications below. Submitting will launch your secure order dispatch conversation directly into our studio WhatsApp pipeline.</p>
+            </div>
+
+            <div class="order-form-wrapper reveal">
+                <form id="portrait-order-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="full-name">Full Name</label>
+                            <input type="text" id="full-name" required placeholder="E.g., Yasmine El Alami">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone-number">Phone Number</label>
+                            <input type="tel" id="phone-number" required placeholder="E.g., 0612345678">
+                        </div>
+                        <div class="form-group">
+                            <label for="city">City Location</label>
+                            <input type="text" id="city" required placeholder="E.g., Casablanca">
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Delivery Address</label>
+                            <input type="text" id="address" required placeholder="Street address, building number, apartment">
+                        </div>
+                        <div class="form-group">
+                            <label for="portrait-style">Portrait Artistic Style</label>
+                            <select id="portrait-style" required>
+                                <option value="" disabled selected>Select Your Medium Style</option>
+                                <option value="Classic Fine Art">Classic Fine Art</option>
+                                <option value="Ethereal Watercolor">Ethereal Watercolor</option>
+                                <option value="Heritage Oil Painting">Heritage Oil Painting</option>
+                                <option value="Monochrome Charcoal">Monochrome Charcoal</option>
+                                <option value="Detailed Prism Pencil">Detailed Prism Pencil</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="frame-color">Frame Wooden Color</label>
+                            <select id="frame-color" required>
+                                <option value="" disabled selected>Select Wood Selection</option>
+                                <option value="Classic Black">Classic Black Wood</option>
+                                <option value="Natural Oak">Natural Oak Wood</option>
+                                <option value="Luxury Walnut">Luxury Walnut Wood</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="frame-size">Frame Canvas Size</label>
+                            <select id="frame-size" required>
+                                <option value="" disabled selected>Select Dimensions</option>
+                                <option value="A4 Size Standard">A4 Size (Premium Desk Placement)</option>
+                                <option value="A3 Size Medium">A3 Size (Elegant Room Statement)</option>
+                                <option value="A2 Size Gallery Proportions">A2 Size (Grand Museum Masterpiece)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="quantity">Order Quantity</label>
+                            <input type="number" id="quantity" value="1" min="1" required>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Source Reference Material</label>
+                            <div class="file-upload-btn" id="file-upload-placeholder">
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                                <span>Click to attach photo reference (Visual only - You will send the actual high-quality photo over WhatsApp)</span>
+                            </div>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="notes">Special Creative Requests / Notes</label>
+                            <textarea id="notes" rows="4" placeholder="Mention preferred details or specific elements to enhance..."></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 0.9rem; letter-spacing: 0.2em;">Submit Commission to WhatsApp</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <a href="https://wa.me/212600000000?text=Hello%20Atelier%20des%20Portraits%20Studio" class="whatsapp-float" target="_blank" aria-label="Connect via WhatsApp with our portrait studio team">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <a href="#" class="logo" style="font-size: 1.3rem;">ATELIER DES PORTRAITS</a>
+                <ul class="footer-links">
+                    <li><a href="#meet-the-artist">About Studio</a></li>
+                    <li><a href="https://instagram.com" target="_blank">Instagram</a></li>
+                    <li><a href="https://wa.me/212600000000" target="_blank">WhatsApp Channel</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+                <div class="copyright">
+                    &copy; 2026 Atelier des Portraits. Curated Elegance. All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            /* --- HEADER TRANSITION BACKGROUND SCROLL EFFECT --- */
+            const header = document.getElementById('main-header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            /* --- MOBILE SIDE NAVIGATION TRIGGER --- */
+            const trigger = document.getElementById('mobile-menu-trigger');
+            const nav = document.getElementById('mobile-navigation');
+            const overlay = document.getElementById('mobile-overlay');
+            const closeBtn = document.getElementById('mobile-close');
+            const links = document.querySelectorAll('.mobile-link');
+
+            function openNav() {
+                nav.classList.add('active');
+                overlay.classList.add('active');
+            }
+
+            function closeNav() {
+                nav.classList.remove('active');
+                overlay.classList.remove('active');
+            }
+
+            trigger.addEventListener('click', openNav);
+            closeBtn.addEventListener('click', closeNav);
+            overlay.addEventListener('click', closeNav);
+            links.forEach(link => link.addEventListener('click', closeNav));
+
+
+            /* --- BEFORE & AFTER INTERACTIVE SLIDER LOGIC --- */
+            const sliderWrapper = document.querySelector('.slider-wrapper');
+            const foregroundImg = document.querySelector('.slider-foreground');
+            const handle = document.querySelector('.slider-handle');
+
+            function moveSlider(e) {
+                const rect = sliderWrapper.getBoundingClientRect();
+                let x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left;
+                
+                if (x < 0) x = 0;
+                if (x > rect.width) x = rect.width;
+                
+                const percent = (x / rect.width) * 100;
+                foregroundImg.style.width = `${percent}%`;
+                handle.style.left = `${percent}%`;
+            }
+
+            sliderWrapper.addEventListener('mousemove', moveSlider);
+            sliderWrapper.addEventListener('touchmove', moveSlider);
+
+
+            /* --- TESTIMONIALS CAROUSEL MANAGEMENT --- */
+            const track = document.getElementById('review-track');
+            const slides = Array.from(track.children);
+            const dotsContainer = document.getElementById('carousel-dots-container');
+            let currentIndex = 0;
+
+            // Generate control dots dynamically
+            slides.forEach((_, idx) => {
+                const dot = document.createElement('div');
+                dot.classList.add('carousel-dot');
+                if (idx === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => updateCarousel(idx));
+                dotsContainer.appendChild(dot);
+            });
+
+            const dots = Array.from(dotsContainer.children);
+
+            function updateCarousel(index) {
+                track.style.transform = `translateX(-${index * 100}%)`;
+                dots[currentIndex].classList.remove('active');
+                dots[index].classList.add('active');
+                currentIndex = index;
+            }
+
+            // Automatic elegant slide shifts
+            setInterval(() => {
+                let nextIdx = currentIndex + 1;
+                if (nextIdx >= slides.length) nextIdx = 0;
+                updateCarousel(nextIdx);
+            }, 6000);
+
+
+            /* --- ACCORDION INTERACTION (FAQ) --- */
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const triggerBtn = item.querySelector('.faq-trigger');
+                triggerBtn.addEventListener('click', () => {
+                    const active = item.classList.contains('active');
+                    
+                    // Collapse open items first
+                    faqItems.forEach(i => {
+                        i.classList.remove('active');
+                        i.querySelector('.faq-content').style.maxHeight = null;
+                    });
+
+                    if (!active) {
+                        item.classList.add('active');
+                        const content = item.querySelector('.faq-content');
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                });
+            });
+
+
+            /* --- REVEAL ON SCROLL INTERACTION ANIMATIONS --- */
+            const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+            
+            function checkReveal() {
+                const triggerBottom = window.innerHeight * 0.85;
+                revealElements.forEach(el => {
+                    const top = el.getBoundingClientRect().top;
+                    if (top < triggerBottom) {
+                        el.classList.add('active');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', checkReveal);
+            checkReveal(); // First execution check on initialization
+
+
+            /* --- VISUAL FILE UPLOAD COMPONENT ANIMATION ENGAGEMENT --- */
+            const uploadBtn = document.getElementById('file-upload-placeholder');
+            uploadBtn.addEventListener('click', () => {
+                alert("To preserve maximum original resolution quality without lossy web compression, you will transmit the physical imagery directly to the artist via your secure WhatsApp chat window in the next step.");
+            });
+
+
+            /* --- FORM SUBMISSION PIPELINE GENERATION TO WHATSAPP --- */
+            const orderForm = document.getElementById('portrait-order-form');
+            orderForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const name = document.getElementById('full-name').value;
+                const phone = document.getElementById('phone-number').value;
+                const city = document.getElementById('city').value;
+                const address = document.getElementById('address').value;
+                const style = document.getElementById('portrait-style').value;
+                const frameColor = document.getElementById('frame-color').value;
+                const frameSize = document.getElementById('frame-size').value;
+                const qty = document.getElementById('quantity').value;
+                const notes = document.getElementById('notes').value || "None";
+
+                // Formulate WhatsApp message structured cleanly
+                const baseMessage = `*NEW LUXURY PORTRAIT COMMISSION* \n\n` +
+                                    `• *Full Name:* ${name}\n` +
+                                    `• *Phone Number:* ${phone}\n` +
+                                    `• *City:* ${city}\n` +
+                                    `• *Delivery Address:* ${address}\n\n` +
+                                    `*Artwork Details:*\n` +
+                                    `• *Selected Medium Style:* ${style}\n` +
+                                    `• *Wood Finish Frame:* ${frameColor}\n` +
+                                    `• *Canvas Dimensions:* ${frameSize}\n` +
+                                    `• *Quantity:* ${qty}\n` +
+                                    `• *Special Creative Requests:* ${notes}\n\n` +
+                                    `_I am ready to upload my reference photo here to initiate the handmade drawing step._`;
+
+                const encodedText = encodeURIComponent(baseMessage);
+                
+                // Replace with studio phone number configuration path
+                const studioWhatsAppNumber = "212600000000"; 
+                const whatsappUrl = `https://wa.me/${studioWhatsAppNumber}?text=${encodedText}`;
+
+                window.open(whatsappUrl, '_blank');
+            });
+        });
+    </script>
+</body>
+</html>
