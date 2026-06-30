@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Professionelles Portfolio für die Erzieherin Ausbildung - Mit Herz, Kreativität und Verantwortung Kinder begleiten.">
+<title>Portfolio | Erzieherin Ausbildung</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+--bg:#FAFAF8;
+--primary:#2F4858;
+--accent:#F4A261;
+--secondary:#E9F5F2;
+--card:#FFFFFF;
+--text:#1F2937;
+--text-secondary:#6B7280;
+--btn:#2F4858;
+--btn-hover:#3F6075;
+--shadow-sm:0 2px 8px rgba(47,72,88,0.06);
+--shadow-md:0 8px 30px rgba(47,72,88,0.08);
+--shadow-lg:0 20px 60px rgba(47,72,88,0.12);
+--radius:20px;
+--radius-sm:12px;
+--transition:all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,h5{font-family:'DM Serif Display',serif;font-weight:400;line-height:1.2}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.section{padding:100px 0}
+.section-label{display:inline-block;font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.section-title{font-size:clamp(32px,5vw,52px);color:var(--primary);margin-bottom:20px}
+.section-subtitle{font-size:18px;color:var(--text-secondary);max-width:600px;line-height:1.7}
+.section-header{text-align:center;margin-bottom:60px}
+.section-header .section-subtitle{margin:0 auto}
+
+/* HEADER */
+.header{position:fixed;top:0;left:0;right:0;z-index:1000;padding:20px 0;transition:var(--transition);background:transparent}
+.header.scrolled{background:rgba(250,250,248,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:14px 0;box-shadow:0 2px 20px rgba(47,72,88,0.06)}
+.header-inner{display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'DM Serif Display',serif;font-size:24px;color:var(--primary)}
+.logo span{color:var(--accent)}
+.nav{display:flex;align-items:center;gap:32px}
+.nav-link{font-size:15px;font-weight:500;color:var(--text);transition:var(--transition);position:relative}
+.nav-link::after{content:'';position:absolute;bottom:-6px;left:0;width:0;height:2px;background:var(--accent);transition:var(--transition)}
+.nav-link:hover{color:var(--primary)}
+.nav-link:hover::after{width:100%}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:50px;font-size:15px;font-weight:500;transition:var(--transition);cursor:pointer;border:none;font-family:inherit}
+.btn-primary{background:var(--btn);color:#fff}
+.btn-primary:hover{background:var(--btn-hover);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.btn-secondary{background:transparent;color:var(--primary);border:1.5px solid var(--primary)}
+.btn-secondary:hover{background:var(--primary);color:#fff;transform:translateY(-2px)}
+.btn-accent{background:var(--accent);color:#fff}
+.btn-accent:hover{background:#e8924f;transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.menu-toggle{display:none;background:none;border:none;cursor:pointer;width:28px;height:20px;position:relative}
+.menu-toggle span{position:absolute;left:0;width:100%;height:2px;background:var(--primary);transition:var(--transition)}
+.menu-toggle span:nth-child(1){top:0}
+.menu-toggle span:nth-child(2){top:50%;transform:translateY(-50%)}
+.menu-toggle span:nth-child(3){bottom:0}
+.menu-toggle.active span:nth-child(1){top:50%;transform:translateY(-50%) rotate(45deg)}
+.menu-toggle.active span:nth-child(2){opacity:0}
+.menu-toggle.active span:nth-child(3){bottom:50%;transform:translateY(50%) rotate(-45deg)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 80px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-20%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(244,162,97,0.15) 0%,transparent 70%);border-radius:50%;z-index:0}
+.hero::after{content:'';position:absolute;bottom:-10%;left:-5%;width:400px;height:400px;background:radial-gradient(circle,rgba(233,245,242,0.8) 0%,transparent 70%);border-radius:50%;z-index:0}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1}
+.hero-content{animation:fadeUp 1s ease-out}
+.hero-label{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;background:var(--secondary);border-radius:50px;font-size:13px;font-weight:600;color:var(--primary);margin-bottom:24px;letter-spacing:0.5px}
+.hero-label::before{content:'';width:8px;height:8px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite}
+.hero-title{font-size:clamp(40px,5.5vw,68px);color:var(--primary);margin-bottom:24px;line-height:1.1}
+.hero-title em{font-style:normal;color:var(--accent);position:relative}
+.hero-subtitle{font-size:18px;color:var(--text-secondary);margin-bottom:36px;max-width:500px}
+.hero-ctas{display:flex;gap:16px;flex-wrap:wrap}
+.hero-image{position:relative;animation:fadeLeft 1s ease-out 0.3s both}
+.hero-image-wrapper{position:relative;border-radius:30px;overflow:hidden;aspect-ratio:4/5;box-shadow:var(--shadow-lg)}
+.hero-image-wrapper img{width:100%;height:100%;object-fit:cover;transition:transform 0.8s ease}
+.hero-image-wrapper:hover img{transform:scale(1.05)}
+.hero-image-decor{position:absolute;width:100%;height:100%;top:20px;left:20px;border:2px solid var(--accent);border-radius:30px;z-index:-1}
+.hero-badge{position:absolute;bottom:30px;left:-20px;background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);padding:20px 24px;border-radius:var(--radius);box-shadow:var(--shadow-md);display:flex;align-items:center;gap:14px;animation:float 3s ease-in-out infinite}
+.hero-badge-icon{width:48px;height:48px;background:var(--secondary);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px}
+.hero-badge-text strong{display:block;font-size:20px;color:var(--primary);font-family:'DM Serif Display',serif}
+.hero-badge-text span{font-size:13px;color:var(--text-secondary)}
+
+/* ABOUT */
+.about{background:var(--card)}
+.about-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:center}
+.about-image{position:relative}
+.about-image-main{border-radius:var(--radius);overflow:hidden;aspect-ratio:4/5;box-shadow:var(--shadow-lg)}
+.about-image-main img{width:100%;height:100%;object-fit:cover;transition:transform 0.8s ease}
+.about-image-main:hover img{transform:scale(1.05)}
+.about-stats{position:absolute;bottom:-30px;right:-30px;background:var(--primary);color:#fff;padding:28px 32px;border-radius:var(--radius);box-shadow:var(--shadow-md)}
+.about-stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.about-stat-number{font-family:'DM Serif Display',serif;font-size:32px;color:var(--accent);display:block}
+.about-stat-label{font-size:12px;opacity:0.9;letter-spacing:0.5px}
+.about-content .section-subtitle{margin-bottom:24px}
+.about-text{color:var(--text-secondary);margin-bottom:20px;font-size:16px}
+.about-values{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
+.about-value{display:flex;align-items:center;gap:12px;padding:14px 18px;background:var(--secondary);border-radius:var(--radius-sm);transition:var(--transition)}
+.about-value:hover{transform:translateX(6px);background:#d4ede8}
+.about-value-icon{width:36px;height:36px;background:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.about-value-text{font-size:14px;font-weight:500;color:var(--primary)}
+
+/* WHY ERZIEHERIN */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.why-card{background:var(--card);padding:36px 30px;border-radius:var(--radius);box-shadow:var(--shadow-sm);transition:var(--transition);position:relative;overflow:hidden;border:1px solid rgba(47,72,88,0.05)}
+.why-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:linear-gradient(90deg,var(--accent),var(--secondary));transform:scaleX(0);transform-origin:left;transition:var(--transition)}
+.why-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
+.why-card:hover::before{transform:scaleX(1)}
+.why-icon{width:60px;height:60px;background:var(--secondary);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:20px;transition:var(--transition)}
+.why-card:hover .why-icon{background:var(--accent);transform:rotate(-8deg) scale(1.05)}
+.why-card h3{font-size:22px;color:var(--primary);margin-bottom:12px}
+.why-card p{color:var(--text-secondary);font-size:15px}
+
+/* EXPERIENCE TIMELINE */
+.experience{background:var(--card)}
+.timeline{position:relative;max-width:800px;margin:0 auto}
+.timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--accent),var(--secondary));transform:translateX(-50%)}
+.timeline-item{position:relative;padding:20px 0;display:grid;grid-template-columns:1fr 60px 1fr;gap:20px}
+.timeline-item:nth-child(odd) .timeline-content{grid-column:1;text-align:right}
+.timeline-item:nth-child(odd) .timeline-dot{grid-column:2}
+.timeline-item:nth-child(odd) .timeline-spacer{grid-column:3}
+.timeline-item:nth-child(even) .timeline-spacer{grid-column:1}
+.timeline-item:nth-child(even) .timeline-dot{grid-column:2}
+.timeline-item:nth-child(even) .timeline-content{grid-column:3}
+.timeline-dot{width:20px;height:20px;background:var(--accent);border:4px solid var(--bg);border-radius:50%;margin:10px auto 0;position:relative;z-index:2;box-shadow:0 0 0 4px rgba(244,162,97,0.2)}
+.timeline-content{background:var(--bg);padding:24px;border-radius:var(--radius);box-shadow:var(--shadow-sm);transition:var(--transition)}
+.timeline-content:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.timeline-date{display:inline-block;padding:4px 14px;background:var(--secondary);border-radius:50px;font-size:12px;font-weight:600;color:var(--primary);margin-bottom:10px}
+.timeline-content h3{font-size:20px;color:var(--primary);margin-bottom:6px}
+.timeline-content h4{font-size:14px;color:var(--accent);font-weight:600;margin-bottom:10px;font-family:'Inter',sans-serif}
+.timeline-content p{color:var(--text-secondary);font-size:14px}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.skill-card{background:var(--card);padding:28px;border-radius:var(--radius);box-shadow:var(--shadow-sm);transition:var(--transition)}
+.skill-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.skill-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.skill-name{font-size:16px;font-weight:600;color:var(--primary)}
+.skill-percent{font-size:14px;font-weight:600;color:var(--accent);font-family:'DM Serif Display',serif}
+.skill-bar{height:8px;background:var(--secondary);border-radius:50px;overflow:hidden}
+.skill-progress{height:100%;background:linear-gradient(90deg,var(--accent),#e8924f);border-radius:50px;width:0;transition:width 1.5s cubic-bezier(0.25,0.46,0.45,0.94)}
+
+/* LANGUAGES */
+.languages{background:var(--card)}
+.languages-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.language-card{background:var(--bg);padding:36px 24px;border-radius:var(--radius);text-align:center;transition:var(--transition);position:relative;overflow:hidden;border:1px solid rgba(47,72,88,0.05)}
+.language-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
+.language-flag{font-size:48px;margin-bottom:16px;display:block}
+.language-name{font-family:'DM Serif Display',serif;font-size:22px;color:var(--primary);margin-bottom:8px}
+.language-level{font-size:13px;color:var(--text-secondary);margin-bottom:16px;font-weight:500}
+.language-bar{height:6px;background:#fff;border-radius:50px;overflow:hidden}
+.language-progress{height:100%;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:50px;width:0;transition:width 1.5s ease}
+
+/* GALLERY */
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:280px;gap:20px}
+.gallery-item{position:relative;border-radius:var(--radius);overflow:hidden;cursor:pointer;box-shadow:var(--shadow-sm);transition:var(--transition)}
+.gallery-item:nth-child(1){grid-row:span 2}
+.gallery-item:nth-child(4){grid-column:span 2}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.8s ease}
+.gallery-item:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+.gallery-item:hover img{transform:scale(1.08)}
+.gallery-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(47,72,88,0.8) 0%,transparent 50%);display:flex;align-items:flex-end;padding:24px;opacity:0;transition:var(--transition)}
+.gallery-item:hover .gallery-overlay{opacity:1}
+.gallery-overlay-text{color:#fff;font-family:'DM Serif Display',serif;font-size:20px}
+
+/* VIDEOS */
+.videos{background:var(--card)}
+.videos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.video-card{background:var(--bg);border-radius:var(--radius);overflow:hidden;transition:var(--transition);cursor:pointer}
+.video-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
+.video-thumb{position:relative;aspect-ratio:16/10;overflow:hidden}
+.video-thumb img{width:100%;height:100%;object-fit:cover;transition:transform 0.8s ease}
+.video-card:hover .video-thumb img{transform:scale(1.08)}
+.video-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(47,72,88,0.3);transition:var(--transition)}
+.video-play-btn{width:64px;height:64px;background:rgba(255,255,255,0.95);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:var(--transition);box-shadow:var(--shadow-md)}
+.video-card:hover .video-play-btn{transform:scale(1.1);background:var(--accent)}
+.video-play-btn svg{width:24px;height:24px;fill:var(--primary);margin-left:4px}
+.video-info{padding:24px}
+.video-info h3{font-size:20px;color:var(--primary);margin-bottom:8px}
+.video-info p{color:var(--text-secondary);font-size:14px}
+
+/* CERTIFICATES */
+.certificates-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.certificate-card{background:var(--card);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm);transition:var(--transition);border:1px solid rgba(47,72,88,0.05)}
+.certificate-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
+.certificate-image{aspect-ratio:4/3;overflow:hidden}
+.certificate-image img{width:100%;height:100%;object-fit:cover;transition:transform 0.8s ease}
+.certificate-card:hover .certificate-image img{transform:scale(1.05)}
+.certificate-info{padding:24px}
+.certificate-info h3{font-size:18px;color:var(--primary);margin-bottom:6px}
+.certificate-info p{color:var(--text-secondary);font-size:14px}
+
+/* VALUES */
+.values{background:var(--card)}
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.value-card{background:var(--bg);padding:40px 30px;border-radius:var(--radius);text-align:center;transition:var(--transition);position:relative;overflow:hidden}
+.value-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--secondary),transparent);opacity:0;transition:var(--transition)}
+.value-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
+.value-card:hover::before{opacity:1}
+.value-icon{width:72px;height:72px;background:var(--card);border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:32px;margin:0 auto 20px;position:relative;z-index:1;box-shadow:var(--shadow-sm);transition:var(--transition)}
+.value-card:hover .value-icon{background:var(--accent);transform:rotate(-8deg)}
+.value-card h3{font-size:22px;color:var(--primary);margin-bottom:10px;position:relative;z-index:1}
+.value-card p{color:var(--text-secondary);font-size:14px;position:relative;z-index:1}
+
+/* WHY CHOOSE ME */
+.why-choose-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.why-choose-content .section-subtitle{margin-bottom:32px}
+.why-choose-list{list-style:none}
+.why-choose-item{display:flex;gap:16px;margin-bottom:24px;align-items:flex-start}
+.why-choose-check{width:28px;height:28px;background:var(--secondary);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.why-choose-check svg{width:16px;height:16px;stroke:var(--primary);fill:none;stroke-width:2.5}
+.why-choose-item h4{font-size:17px;color:var(--primary);margin-bottom:4px;font-family:'Inter',sans-serif;font-weight:600}
+.why-choose-item p{color:var(--text-secondary);font-size:14px}
+.why-choose-image{position:relative}
+.why-choose-image-main{border-radius:var(--radius);overflow:hidden;aspect-ratio:1;box-shadow:var(--shadow-lg)}
+.why-choose-image-main img{width:100%;height:100%;object-fit:cover;transition:transform 0.8s ease}
+.why-choose-image-main:hover img{transform:scale(1.05)}
+.why-choose-float{position:absolute;top:-20px;right:-20px;background:var(--accent);color:#fff;padding:24px 28px;border-radius:var(--radius);box-shadow:var(--shadow-md);max-width:200px}
+.why-choose-float strong{display:block;font-family:'DM Serif Display',serif;font-size:28px;margin-bottom:4px}
+.why-choose-float span{font-size:13px;opacity:0.95}
+
+/* TESTIMONIALS */
+.testimonials{background:var(--card)}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.testimonial-card{background:var(--bg);padding:36px 30px;border-radius:var(--radius);transition:var(--transition);position:relative;border:1px solid rgba(47,72,88,0.05)}
+.testimonial-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md)}
+.testimonial-quote{font-size:48px;color:var(--accent);font-family:'DM Serif Display',serif;line-height:1;margin-bottom:16px}
+.testimonial-text{color:var(--text);font-size:15px;margin-bottom:24px;font-style:italic;line-height:1.7}
+.testimonial-author{display:flex;align-items:center;gap:14px}
+.testimonial-avatar{width:48px;height:48px;background:var(--secondary);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px}
+.testimonial-info strong{display:block;font-size:15px;color:var(--primary)}
+.testimonial-info span{font-size:13px;color:var(--text-secondary)}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:start}
+.contact-info h3{font-size:28px;color:var(--primary);margin-bottom:16px}
+.contact-info p{color:var(--text-secondary);margin-bottom:32px}
+.contact-details{list-style:none}
+.contact-detail{display:flex;align-items:center;gap:16px;margin-bottom:20px}
+.contact-detail-icon{width:48px;height:48px;background:var(--secondary);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.contact-detail-text strong{display:block;font-size:13px;color:var(--text-secondary);font-weight:500;margin-bottom:2px}
+.contact-detail-text span{font-size:15px;color:var(--primary);font-weight:500}
+.contact-form{background:var(--card);padding:40px;border-radius:var(--radius);box-shadow:var(--shadow-md)}
+.form-group{margin-bottom:20px}
+.form-label{display:block;font-size:14px;font-weight:500;color:var(--primary);margin-bottom:8px}
+.form-input,.form-textarea{width:100%;padding:14px 18px;border:1.5px solid #e5e7eb;border-radius:var(--radius-sm);font-size:15px;font-family:inherit;transition:var(--transition);background:var(--bg);color:var(--text)}
+.form-input:focus,.form-textarea:focus{outline:none;border-color:var(--accent);background:#fff;box-shadow:0 0 0 4px rgba(244,162,97,0.1)}
+.form-textarea{resize:vertical;min-height:140px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+
+/* FOOTER */
+.footer{background:var(--primary);color:#fff;padding:60px 0 30px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-brand{font-family:'DM Serif Display',serif;font-size:28px;margin-bottom:16px}
+.footer-brand span{color:var(--accent)}
+.footer-desc{color:rgba(255,255,255,0.7);font-size:14px;max-width:300px;line-height:1.7}
+.footer-title{font-size:15px;font-weight:600;margin-bottom:20px;color:#fff}
+.footer-links{list-style:none}
+.footer-links li{margin-bottom:10px}
+.footer-links a{color:rgba(255,255,255,0.7);font-size:14px;transition:var(--transition)}
+.footer-links a:hover{color:var(--accent);padding-left:6px}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:24px;text-align:center;color:rgba(255,255,255,0.6);font-size:13px}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeLeft{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:translateX(0)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 0.8s ease,transform 0.8s ease}
+.reveal.active{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity 0.8s ease,transform 0.8s ease}
+.reveal-left.active{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(40px);transition:opacity 0.8s ease,transform 0.8s ease}
+.reveal-right.active{opacity:1;transform:translateX(0)}
+.delay-1{transition-delay:0.1s}
+.delay-2{transition-delay:0.2s}
+.delay-3{transition-delay:0.3s}
+.delay-4{transition-delay:0.4s}
+.delay-5{transition-delay:0.5s}
+.delay-6{transition-delay:0.6s}
+
+/* GLASS REFLECTION */
+.glass{background:rgba(255,255,255,0.7);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.3)}
+
+/* RESPONSIVE */
+@media(max-width:968px){
+.nav{position:fixed;top:0;right:-100%;width:80%;max-width:320px;height:100vh;background:var(--card);flex-direction:column;justify-content:center;gap:24px;box-shadow:var(--shadow-lg);transition:var(--transition);padding:40px}
+.nav.active{right:0}
+.menu-toggle{display:block}
+.hero-grid,.about-grid,.why-choose-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
+.hero-image{order:-1;max-width:400px;margin:0 auto}
+.hero-image-decor{display:none}
+.why-grid,.languages-grid,.skills-grid,.videos-grid,.certificates-grid,.values-grid,.testimonials-grid{grid-template-columns:repeat(2,1fr)}
+.gallery-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:240px}
+.gallery-item:nth-child(1){grid-row:span 1}
+.gallery-item:nth-child(4){grid-column:span 1}
+.footer-grid{grid-template-columns:1fr 1fr;gap:30px}
+.timeline::before{left:20px}
+.timeline-item{grid-template-columns:40px 1fr;gap:16px}
+.timeline-item:nth-child(odd) .timeline-content,.timeline-item:nth-child(even) .timeline-content{grid-column:2;text-align:left}
+.timeline-item:nth-child(odd) .timeline-dot,.timeline-item:nth-child(even) .timeline-dot{grid-column:1}
+.timeline-spacer{display:none}
+.about-stats{right:10px;bottom:-20px}
+.why-choose-float{right:10px;top:10px}
+}
+@media(max-width:640px){
+.section{padding:70px 0}
+.why-grid,.languages-grid,.skills-grid,.videos-grid,.certificates-grid,.values-grid,.testimonials-grid,.gallery-grid{grid-template-columns:1fr}
+.footer-grid{grid-template-columns:1fr}
+.form-row{grid-template-columns:1fr}
+.contact-form{padding:28px}
+.about-values{grid-template-columns:1fr}
+.about-stats{position:relative;bottom:auto;right:auto;margin-top:20px}
+.hero-badge{position:relative;bottom:auto;left:auto;margin-top:20px;animation:none}
+.why-choose-float{position:relative;top:auto;right:auto;margin-top:20px}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header" id="header">
+<div class="container header-inner">
+<a href="#home" class="logo">Portfolio<span>.</span></a>
+<nav class="nav" id="nav">
+<a href="#home" class="nav-link">Startseite</a>
+<a href="#about" class="nav-link">Über mich</a>
+<a href="#experience" class="nav-link">Erfahrung</a>
+<a href="#gallery" class="nav-link">Galerie</a>
+<a href="#videos" class="nav-link">Videos</a>
+<a href="#languages" class="nav-link">Sprachen</a>
+<a href="#contact" class="btn btn-primary">Kontakt aufnehmen</a>
+</nav>
+<button class="menu-toggle" id="menuToggle" aria-label="Menü">
+<span></span><span></span><span></span>
+</button>
+</div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+<div class="container">
+<div class="hero-grid">
+<div class="hero-content">
+<span class="hero-label">Portfolio · Erzieherin Ausbildung 2026</span>
+<h1 class="hero-title">Mit Herz, Kreativität und <em>Verantwortung</em> Kinder begleiten.</h1>
+<p class="hero-subtitle">Willkommen in meinem Portfolio. Hier lernen Sie mich, meine Erfahrungen und meine Motivation für die Ausbildung als Erzieherin kennen.</p>
+<div class="hero-ctas">
+<a href="#about" class="btn btn-primary">Mein Portfolio entdecken</a>
+<a href="#contact" class="btn btn-secondary">Kontakt</a>
+</div>
+</div>
+<div class="hero-image">
+<div class="hero-image-wrapper">
+<img src="https://image.qwenlm.ai/public_source/4953d870-cc88-4750-a9dc-66838b6c36bc/1cdd2ec62-1d5c-4d5d-85be-38fa36d4b0b5.png" alt="Portrait" loading="eager">
+</div>
+<div class="hero-image-decor"></div>
+<div class="hero-badge">
+<div class="hero-badge-icon">🎓</div>
+<div class="hero-badge-text">
+<strong>2026</strong>
+<span>Ausbildungsstart</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section class="section about" id="about">
+<div class="container">
+<div class="about-grid">
+<div class="about-image reveal-left">
+<div class="about-image-main">
+<img src="https://image.qwenlm.ai/public_source/4953d870-cc88-4750-a9dc-66838b6c36bc/1274f8db4-3d6e-4fd6-891a-090b15efc8bd.png" alt="Über mich" loading="lazy">
+</div>
+<div class="about-stats">
+<div class="about-stats-grid">
+<div>
+<span class="about-stat-number counter" data-target="3">0</span>
+<span class="about-stat-label">Jahre Erfahrung</span>
+</div>
+<div>
+<span class="about-stat-number counter" data-target="50">0</span>
+<span class="about-stat-label">Projekte</span>
+</div>
+<div>
+<span class="about-stat-number counter" data-target="4">0</span>
+<span class="about-stat-label">Sprachen</span>
+</div>
+<div>
+<span class="about-stat-number counter" data-target="100">0</span>
+<span class="about-stat-label">% Engagement</span>
+</div>
+</div>
+</div>
+</div>
+<div class="about-content reveal-right">
+<span class="section-label">Über mich</span>
+<h2 class="section-title">Eine Leidenschaft, die mich antreibt.</h2>
+<p class="section-subtitle">Ich bin eine engagierte und kreative Persönlichkeit mit einer tiefen Liebe zur Arbeit mit Kindern.</p>
+<p class="about-text">Seit meiner frühen Jugend fasziniert mich die Welt der Kinder. Ihre Neugier, ihre Kreativität und ihre ehrliche Art, die Welt zu sehen, inspirieren mich jeden Tag aufs Neue. Ich glaube fest daran, dass Bildung mehr ist als nur Wissen vermitteln – es geht darum, Kinder auf ihrem Weg zu begleiten, sie zu ermutigen und ihnen zu helfen, ihre eigenen Stärken zu entdecken.</p>
+<p class="about-text">Meine Werte sind Respekt, Empathie und Verantwortung. Ich arbeite gerne im Team, bin zuverlässig und bringe immer frische Ideen mit. Die Ausbildung zur Erzieherin ist für mich der nächste logische Schritt, um meine Leidenschaft zum Beruf zu machen.</p>
+<div class="about-values">
+<div class="about-value">
+<div class="about-value-icon">💛</div>
+<div class="about-value-text">Herz & Leidenschaft</div>
+</div>
+<div class="about-value">
+<div class="about-value-icon"></div>
+<div class="about-value-text">Wachstum & Lernen</div>
+</div>
+<div class="about-value">
+<div class="about-value-icon">🤝</div>
+<div class="about-value-text">Teamarbeit</div>
+</div>
+<div class="about-value">
+<div class="about-value-icon">✨</div>
+<div class="about-value-text">Kreativität</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- WHY ERZIEHERIN -->
+<section class="section" id="why">
+<div class="container">
+<div class="section-header reveal">
+<span class="section-label">Meine Motivation</span>
+<h2 class="section-title">Warum Erzieherin?</h2>
+<p class="section-subtitle">Sechs Gründe, warum dieser Beruf perfekt zu mir passt und warum ich jeden Tag mit Freude zur Arbeit komme.</p>
+</div>
+<div class="why-grid">
+<div class="why-card reveal delay-1">
+<div class="why-icon">💕</div>
+<h3>Liebe zur Arbeit mit Kindern</h3>
+<p>Kinder sind ehrlich, neugierig und voller Leben. Mit ihnen zu arbeiten bedeutet für mich, jeden Tag etwas Neues zu lernen und zu wachsen.</p>
+</div>
+<div class="why-card reveal delay-2">
+<div class="why-icon">🌿</div>
+<h3>Geduld</h3>
+<p>Jedes Kind hat sein eigenes Tempo. Ich nehme mir die Zeit, zuzuhören und zu verstehen, bevor ich handle.</p>
+</div>
+<div class="why-card reveal delay-3">
+<div class="why-icon"></div>
+<h3>Verantwortungsbewusstsein</h3>
+<p>Die Entwicklung von Kindern ist eine große Verantwortung, die ich mit Ernsthaftigkeit und Hingabe annehme.</p>
+</div>
+<div class="why-card reveal delay-4">
+<div class="why-icon"></div>
+<h3>Kommunikation</h3>
+<p>Offene und klare Kommunikation mit Kindern, Eltern und Kollegen ist für mich die Basis guter Zusammenarbeit.</p>
+</div>
+<div class="why-card reveal delay-5">
+<div class="why-icon">🤗</div>
+<h3>Teamfähigkeit</h3>
+<p>Gemeinsam erreichen wir mehr. Ich schätze den Austausch und die Unterstützung im Team sehr.</p>
+</div>
+<div class="why-card reveal delay-6">
+<div class="why-icon">🎨</div>
+<h3>Kreativität</h3>
+<p>Kreative Ideen machen den Alltag mit Kindern bunter und spannender. Ich liebe es, neue Projekte zu entwickeln.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section experience" id="experience">
+<div class="container">
+<div class="section-header reveal">
+<span class="section-label">Mein Weg</span>
+<h2 class="section-title">Meine Erfahrung</h2>
+<p class="section-subtitle">Ein Überblick über meine Ausbildung, Praktika und beruflichen Stationen, die mich auf diesem Weg begleitet haben.</p>
+</div>
+<div class="timeline">
+<div class="timeline-item reveal">
+<div class="timeline-content">
+<span class="timeline-date">2024 – Heute</span>
+<h3>Englischlehrerin</h3>
+<h4>Sprachschule · Teilzeit</h4>
+<p>Unterricht von Kindern und Jugendlichen im Alter von 6–16 Jahren. Entwicklung kreativer Lernmaterialien und spielerischer Methoden.</p>
+</div>
+<div class="timeline-dot"></div>
+<div class="timeline-spacer"></div>
+</div>
+<div class="timeline-item reveal">
+<div class="timeline-spacer"></div>
+<div class="timeline-dot"></div>
+<div class="timeline-content">
+<span class="timeline-date">2023 – 2024</span>
+<h3>Praktikum im Kindergarten</h3>
+<h4>Städtische Kita · Vollzeit</h4>
+<p>Begleitung von Kindern im Alter von 3–6 Jahren. Planung und Durchführung von Bildungsangeboten, Elterngespräche und Teamarbeit.</p>
+</div>
+</div>
+<div class="timeline-item reveal">
+<div class="timeline-content">
+<span class="timeline-date">2022 – 2023</span>
+<h3>Ehrenamtliche Arbeit</h3>
+<h4>Gemeindezentrum</h4>
+<p>Organisation von Freizeitaktivitäten für Kinder, Nachhilfe und Unterstützung bei der Hausaufgabenbetreuung.</p>
+</div>
+<div class="timeline-dot"></div>
+<div class="timeline-spacer"></div>
+</div>
+<div class="timeline-item reveal">
+<div class="timeline-spacer"></div>
+<div class="timeline-dot"></div>
+<div class="timeline-content">
+<span class="timeline-date">2021 – 2022</span>
+<h3>Weiterbildungen & Zertifikate</h3>
+<h4>Online & Präsenz</h4>
+<p>Kurse in Pädagogik, Kinderpsychologie, Erste Hilfe für Kinder und inklusive Bildung. Deutsch B2-Zertifikat.</p>
+</div>
+</div>
+<div class="timeline-item reveal">
+<div class="timeline-content">
+<span class="timeline-date">2020 – 2021</span>
+<h3>Schulabschluss</h3>
+<h4>Allgemeine Hochschulreife</h4>
+<p>Fokus auf Sozialwissenschaften und Sprachen. Aktive Mitarbeit in der Schülervertretung und sozialen Projekten.</p>
+</div>
+<div class="timeline-dot"></div>
+<div class="timeline-spacer"></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+<div class="container">
+<div class="section-header reveal">
+<span class="section-label">Kompetenzen</span>
+<h2 class="section-title">Meine Fähigkeiten</h2>
+<p class="section-subtitle">Die Stärken, die ich in meine Arbeit einbringe und die mich zu einer wertvollen zukünftigen Erzieherin machen.</p>
+</div>
+<div class="skills-grid">
+<div class="skill-card reveal delay-1">
+<div class="skill-header">
+<span class="skill-name">Kommunikation</span>
+<span class="skill-percent">95%</span>
+</div>
+<div class="skill-bar"><div class="skill-progress" data-width="95"></div></div>
+</div>
+<div class="skill-card reveal delay-2">
+<div class="skill-header">
+<span class="skill-name">Organisation</span>
+<span class="skill-percent">90%</span>
+</div>
+<div class="skill-bar"><div class="skill-progress" data-width="90"></div></div>
+</div>
+<div class="skill-card reveal delay-3">
+<div class="skill-header">
+<span class="skill-name">Geduld</span>
+<span class="skill-percent">98%</span>
+</div>
+<div class="skill-bar"><div class="skill-progress" data-width="98"></div></div>
+</div>
+<div class="skill-card reveal delay-4">
+<div class="skill-header">
+<span class="skill-name">Empathie</span>
+<span class="skill-percent">96%</span>
+</div>
+<div class="skill-bar"><div class="skill-progress" data-width="96"></div></div>
+</div>
+<div class="skill-card reveal delay-5">
+<div class="skill-header">
+<span class="skill-name">Kreativität</span>
+<span class="skill-percent">92%</span>
+</div>
+<div class="skill-bar"><div class="skill-progress" data-width="92"></div></div>
+</div>
+<div class="skill-card reveal delay-6">
+<div class="skill-header">
+<span class="skill-name">Verantwortung</span>
+<span class="skill-percent">97%</span>
+</div>
+<div class="skill-bar"><div class="skill-progress" data-width="97"></div></div>
+</div>
+<div class="skill-card reveal delay-1">
+<div class="skill-header">
+<span class="skill-name">Teamarbeit</span>
+<span class="skill-percent">94%</span>
+</div>
+<div class="skill-bar"><div class="skill-progress" data-width="94"></div></div>
+</div>
+<div class="skill-card reveal delay-2">
+<div class="skill-header">
+<span class="skill-name">Zeitmanagement</span>
+<span class="skill-percent">88%</span>
+</div>
+<div class="skill-bar"><div class="skill-progress" data-width="88"></div></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- LANGUAGES -->
+<section class="section languages" id="languages">
+<div class="container">
+<div class="section-header reveal">
+<span class="section-label">Sprachkenntnisse</span>
+<h2 class="section-title">Meine Sprachen</h2>
+<p class="section-subtitle">Mehrsprachigkeit ist eine Bereicherung – für mich und für die Kinder, mit denen ich arbeite.</p>
+</div>
+<div class="languages-grid">
+<div class="language-card reveal delay-1">
+<span class="language-flag">🇩🇪</span>
+<h3 class="language-name">Deutsch</h3>
+<p class="language-level">B2 – Fortgeschritten</p>
+<div class="language-bar"><div class="language-progress" data-width="85"></div></div>
+</div>
+<div class="language-card reveal delay-2">
+<span class="language-flag">🇬</span>
+<h3 class="language-name">Englisch</h3>
+<p class="language-level">C1 – Fließend</p>
+<div class="language-bar"><div class="language-progress" data-width="95"></div></div>
+</div>
+<div class="language-card reveal delay-3">
+<span class="language-flag">🇦</span>
+<h3 class="language-name">Arabisch</h3>
+<p class="language-level">Muttersprache</p>
+<div class="language-bar"><div class="language-progress" data-width="100"></div></div>
+</div>
+<div class="language-card reveal delay-4">
+<span class="language-flag">🇷</span>
+<h3 class="language-name">Französisch</h3>
+<p class="language-level">A2 – Grundlegend</p>
+<div class="language-bar"><div class="language-progress" data-width="40"></div></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- GALLERY -->
+<section class="section" id="gallery">
+<div class="container">
+<div class="section-header reveal">
+<span class="section-label">Impressionen</span>
+<h2 class="section-title">Meine Galerie</h2>
+<p class="section-subtitle">Einblicke in meine Arbeit, kreative Projekte und schöne Momente aus dem Bildungsalltag.</p>
+</div>
+<div class="gallery-grid">
+<div class="gallery-item reveal delay-1">
+<img src="https://image.qwenlm.ai/public_source/4953d870-cc88-4750-a9dc-66838b6c36bc/1af7285ca-2119-4ecd-83d3-9b0db3f51bcf.png" alt="Kreative Aktivitäten" loading="lazy">
+<div class="gallery-overlay"><span class="gallery-overlay-text">Kreative Aktivitäten</span></div>
+</div>
+<div class="gallery-item reveal delay-2">
+<img src="https://image.qwenlm.ai/public_source/4953d870-cc88-4750-a9dc-66838b6c36bc/177bb11e0-ae35-4a13-89fa-e28e6b603172.png" alt="Vorlesen" loading="lazy">
+<div class="gallery-overlay"><span class="gallery-overlay-text">Geschichten erzählen</span></div>
+</div>
+<div class="gallery-item reveal delay-3">
+<img src="https://image.qwenlm.ai/public_source/4953d870-cc88-4750-a9dc-66838b6c36bc/1274f8db4-3d6e-4fd6-891a-090b15efc8bd.png" alt="Teamarbeit" loading="lazy">
+<div class="gallery-overlay"><span class="gallery-overlay-text">Gemeinsam lernen</span></div>
+</div>
+<div class="gallery-item reveal delay-4">
+<img src="https://image.qwenlm.ai/public_source/4953d870-cc88-4750-a9dc-66838b6c36bc/1d25fdd26-94aa-484a-8b9a-9242ba9ae352.png" alt="Natur entdecken" loading="lazy">
+<div class="gallery-overlay"><span class="gallery-overlay-text">Natur entdecken</span></div>
+</div>
+<div class="gallery-item reveal delay-5">
+<img src="https://image.qwenlm.ai/public_source/4953d870-cc88-4750-a9dc-66838b6c36bc/1332206fa-76c4-4065-8a72-ade4ac70b650.png" alt="Musik" loading="lazy">
+<div class="gallery-overlay"><span class="gallery-overlay-text">Musik & Rhythmus</span></div>
+</div>
+<div class="gallery-item reveal delay-6">
+<img src="https://image.qwenlm.ai/public_source/4953d870-cc88-4750-a9dc-66838b6c36bc/16af87ab0-6e17-417d-a82f-f17d3430a691.png" alt="Präsentation" loading="lazy">
+<div class="gallery-overlay"><span class="gallery-overlay-text">Präsentationen</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- VIDEOS -->
+<section class="section videos" id="videos">
+<div class="container">
+<div class="section-header reveal">
+<span class="section-label">Multimedia</span>
+<h2 class="section-title">Videos</h2>
+<p class="section-subtitle">Kurze Einblicke in meine Arbeit und Projekte, die meine Leidenschaft für die Bildung zeigen.</p>
+</div>
+<div class="videos-grid">
+<div class="video-card reveal delay-1">
+<div class="video-thumb">
+<img src="https://image.qwenlm.ai/public_source/4953d870-cc88-4750-a9dc-66838b6c36bc/1af7285ca-2119-4ecd-83d3-9b0db3f51bcf.png" alt="Video 1" loading="lazy">
+<div class="video-play">
+<div class="video-play-btn">
+<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+</div>
+</div>
+</div>
+<div class="video-info">
+<h3>Kreative Projekte</h3>
+<p>Wie ich Kinder durch kreative Aktivitäten fördere.</p>
+</div>
+</div>
+<div class="video-card reveal delay-2">
+<div class="video-thumb">
+<img src="https://image.qwenlm.ai/public_source/4953d870-cc88-4750-a9dc-66838b6c36bc/177bb11e0-ae35-4a13-89fa-e28e6b603172.png" alt="Video 2" loading="lazy">
+<div class="video-play">
+<div class="video-play-btn">
+<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+</div>
+</div>
+</div>
+<div class="video-info">
+<h3>Geschichten erzählen</h3>
+<p>Die Kraft des Vorlesens und Zuhörens.</p>
+</div>
+</div>
+<div class="video-card reveal delay-3">
+<div class="video-thumb">
+<img src="https://image.qwenlm.ai/public_source/4953d870-cc88-4750-a9dc-66838b6c36bc/1332206fa-76c4-4065-8a72-ade4ac70b650.png" alt="Video 3" loading="lazy">
+<div class="video-play">
+<div class="video-play-btn">
+<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+</div>
+</div>
+</div>
+<div class="video-info">
+<h3>Musik & Bewegung</h3>
+<p>Rhythmik und Musik als Lernwerkzeuge.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CERTIFICATES -->
+<section class="section" id="certificates">
+<div class="container">
+<div class="section-header reveal">
+<span class="section-label">Qualifikationen</span>
+<h2 class="section-title">Meine Zertifikate</h2>
+<p class="section-subtitle">Nachweise meiner Weiterbildung und fachlichen Qualifikationen.</p>
+</div>
+<div class="certificates-grid">
+<div class="certificate-card reveal delay-1">
+<div class="certificate-image">
+<img src="https://image.qwenlm.ai/public_source/4953d870-cc88-4750-a9dc-66838b6c36bc/1327df181-dd0c-49fb-bd44-14fa8bc93385.png" alt="Zertifikat 1" loading="lazy">
+</div>
+<div class="certificate-info">
+<h3>Bildungsabschluss</h3>
+<p>Allgemeine Hochschulreife mit Fokus auf Sozialwissenschaften.</p>
+</div>
+</div>
+<div class="certificate-card reveal delay-2">
+<div class="certificate-image">
+<img src="https://image.qwenlm.ai/public_source/4953d870-cc88-4750-a9dc-66838b6c36bc/188e86b19-36e0-4bc1-a9a4-01abe8e3efe3.png" alt="Zertifikat 2" loading="lazy">
+</div>
+<div class="certificate-info">
+<h3>Sprachzertifikat</h3>
+<p>Deutsch B2 – Goethe-Institut, 2024.</p>
+</div>
+</div>
+<div class="certificate-card reveal delay-3">
+<div class="certificate-image">
+<img src="https://image.qwenlm.ai/public_source/4953d870-cc88-4750-a9dc-66838b6c36bc/1609b508d-fab8-4b86-947e-1fa27b60b401.png" alt="Zertifikat 3" loading="lazy">
+</div>
+<div class="certificate-info">
+<h3>Weiterbildung</h3>
+<p>Erste Hilfe für Kinder & Pädagogik-Grundlagen.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- VALUES -->
+<section class="section values" id="values">
+<div class="container">
+<div class="section-header reveal">
+<span class="section-label">Werte</span>
+<h2 class="section-title">Meine Werte</h2>
+<p class="section-subtitle">Die Prinzipien, nach denen ich lebe und arbeite – sie sind das Fundament meiner pädagogischen Haltung.</p>
+</div>
+<div class="values-grid">
+<div class="value-card reveal delay-1">
+<div class="value-icon">🤝</div>
+<h3>Respekt</h3>
+<p>Jedes Kind verdient Respekt – unabhängig von Herkunft, Fähigkeiten oder Persönlichkeit.</p>
+</div>
+<div class="value-card reveal delay-2">
+<div class="value-icon">🌱</div>
+<h3>Geduld</h3>
+<p>Entwicklung braucht Zeit. Ich gebe Kindern den Raum, den sie brauchen.</p>
+</div>
+<div class="value-card reveal delay-3">
+<div class="value-icon">💛</div>
+<h3>Empathie</h3>
+<p>Ich versuche, die Welt durch die Augen der Kinder zu sehen und ihre Gefühle zu verstehen.</p>
+</div>
+<div class="value-card reveal delay-4">
+<div class="value-icon">📚</div>
+<h3>Lernen</h3>
+<p>Lebenslanges Lernen ist für mich selbstverständlich – für mich und die Kinder.</p>
+</div>
+<div class="value-card reveal delay-5">
+<div class="value-icon"></div>
+<h3>Vertrauen</h3>
+<p>Eine vertrauensvolle Beziehung ist die Basis für jede erfolgreiche pädagogische Arbeit.</p>
+</div>
+<div class="value-card reveal delay-6">
+<div class="value-icon">🎨</div>
+<h3>Kreativität</h3>
+<p>Kreativität öffnet Türen – sie macht Lernen spannend und ermöglicht neue Perspektiven.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- WHY CHOOSE ME -->
+<section class="section" id="why-choose">
+<div class="container">
+<div class="why-choose-grid">
+<div class="why-choose-content reveal-left">
+<span class="section-label">Warum ich?</span>
+<h2 class="section-title">Warum ich eine wertvolle zukünftige Erzieherin bin.</h2>
+<p class="section-subtitle">Ich bringe nicht nur Qualifikationen mit, sondern auch eine echte Leidenschaft für die Arbeit mit Kindern und eine klare Vision für meine berufliche Zukunft.</p>
+<ul class="why-choose-list">
+<li class="why-choose-item">
+<div class="why-choose-check">
+<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+</div>
+<div>
+<h4>Mehrsprachigkeit</h4>
+<p>Vier Sprachen ermöglichen es mir, mit Kindern und Familien unterschiedlicher Herkunft zu kommunizieren.</p>
+</div>
+</li>
+<li class="why-choose-item">
+<div class="why-choose-check">
+<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+</div>
+<div>
+<h4>Praktische Erfahrung</h4>
+<p>Durch Praktika und ehrenamtliche Arbeit habe ich bereits wertvolle Erfahrungen im Umgang mit Kindern gesammelt.</p>
+</div>
+</li>
+<li class="why-choose-item">
+<div class="why-choose-check">
+<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+</div>
+<div>
+<h4>Kreativer Ansatz</h4>
+<p>Ich entwickle gerne neue Ideen und Projekte, die den Alltag der Kinder bereichern und spannend gestalten.</p>
+</div>
+</li>
+<li class="why-choose-item">
+<div class="why-choose-check">
+<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+</div>
+<div>
+<h4>Teamplayer</h4>
+<p>Ich arbeite gerne im Team, bin zuverlässig und bringe eine positive Energie in jede Zusammenarbeit.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="why-choose-image reveal-right">
+<div class="why-choose-image-main">
+<img src="https://image.qwenlm.ai/public_source/4953d870-cc88-4750-a9dc-66838b6c36bc/1d25fdd26-94aa-484a-8b9a-9242ba9ae352.png" alt="Warum ich" loading="lazy">
+</div>
+<div class="why-choose-float">
+<strong>100%</strong>
+<span>Engagement für jedes Kind</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section testimonials" id="testimonials">
+<div class="container">
+<div class="section-header reveal">
+<span class="section-label">Stimmen</span>
+<h2 class="section-title">Was andere über mich sagen</h2>
+<p class="section-subtitle">Feedback von Menschen, mit denen ich zusammengearbeitet habe.</p>
+</div>
+<div class="testimonials-grid">
+<div class="testimonial-card reveal delay-1">
+<div class="testimonial-quote">"</div>
+<p class="testimonial-text">Eine sehr engagierte und einfühlsame Person. Sie hat ein natürliches Talent im Umgang mit Kindern und bringt immer frische Ideen ein.</p>
+<div class="testimonial-author">
+<div class="testimonial-avatar">👩‍🏫</div>
+<div class="testimonial-info">
+<strong>Frau Schneider</strong>
+<span>Lehrerin · Sprachschule</span>
+</div>
+</div>
+</div>
+<div class="testimonial-card reveal delay-2">
+<div class="testimonial-quote">"</div>
+<p class="testimonial-text">Zuverlässig, kreativ und immer mit einem Lächeln. Sie ist ein wertvolles Mitglied jedes Teams und die Kinder lieben sie.</p>
+<div class="testimonial-author">
+<div class="testimonial-avatar">👨‍💼</div>
+<div class="testimonial-info">
+<strong>Herr Müller</strong>
+<span>Leiter · Kindergarten</span>
+</div>
+</div>
+</div>
+<div class="testimonial-card reveal delay-3">
+<div class="testimonial-quote">"</div>
+<p class="testimonial-text">Ihre Leidenschaft für Bildung ist ansteckend. Sie geht auf jedes Kind individuell ein und schafft eine warme Atmosphäre.</p>
+<div class="testimonial-author">
+<div class="testimonial-avatar">👩💼</div>
+<div class="testimonial-info">
+<strong>Frau Weber</strong>
+<span>Mentorin · Praktikum</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section class="section" id="contact" style="background:var(--card)">
+<div class="container">
+<div class="section-header reveal">
+<span class="section-label">Kontakt</span>
+<h2 class="section-title">Lassen Sie uns sprechen.</h2>
+<p class="section-subtitle">Ich freue mich über Ihre Nachricht und die Möglichkeit, mich persönlich vorzustellen.</p>
+</div>
+<div class="contact-grid">
+<div class="contact-info reveal-left">
+<h3>Kontaktinformationen</h3>
+<p>Ich bin jederzeit erreichbar und beantworte Ihre Nachricht so schnell wie möglich.</p>
+<ul class="contact-details">
+<li class="contact-detail">
+<div class="contact-detail-icon">📧</div>
+<div class="contact-detail-text">
+<strong>E-Mail</strong>
+<span>kontakt@portfolio-erzieherin.de</span>
+</div>
+</li>
+<li class="contact-detail">
+<div class="contact-detail-icon"></div>
+<div class="contact-detail-text">
+<strong>Telefon</strong>
+<span>+49 123 456 7890</span>
+</div>
+</li>
+<li class="contact-detail">
+<div class="contact-detail-icon">📍</div>
+<div class="contact-detail-text">
+<strong>Standort</strong>
+<span>Deutschland</span>
+</div>
+</li>
+<li class="contact-detail">
+<div class="contact-detail-icon">⏰</div>
+<div class="contact-detail-text">
+<strong>Verfügbarkeit</strong>
+<span>Mo – Fr, 9:00 – 18:00</span>
+</div>
+</li>
+</ul>
+</div>
+<form class="contact-form reveal-right" id="contactForm" onsubmit="return handleSubmit(event)">
+<div class="form-row">
+<div class="form-group">
+<label class="form-label">Name</label>
+<input type="text" class="form-input" placeholder="Ihr Name" required>
+</div>
+<div class="form-group">
+<label class="form-label">E-Mail</label>
+<input type="email" class="form-input" placeholder="ihre@email.de" required>
+</div>
+</div>
+<div class="form-group">
+<label class="form-label">Telefon</label>
+<input type="tel" class="form-input" placeholder="+49 ...">
+</div>
+<div class="form-group">
+<label class="form-label">Nachricht</label>
+<textarea class="form-textarea" placeholder="Ihre Nachricht..." required></textarea>
+</div>
+<button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;padding:16px">Nachricht senden →</button>
+</form>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="container">
+<div class="footer-grid">
+<div>
+<div class="footer-brand">Portfolio<span>.</span></div>
+<p class="footer-desc">Ein professionelles Portfolio für die Bewerbung zur Erzieherin Ausbildung. Mit Herz, Kreativität und Verantwortung.</p>
+</div>
+<div>
+<h4 class="footer-title">Portfolio</h4>
+<ul class="footer-links">
+<li><a href="#about">Über mich</a></li>
+<li><a href="#experience">Erfahrung</a></li>
+<li><a href="#skills">Fähigkeiten</a></li>
+<li><a href="#certificates">Zertifikate</a></li>
+</ul>
+</div>
+<div>
+<h4 class="footer-title">Galerie</h4>
+<ul class="footer-links">
+<li><a href="#gallery">Fotos</a></li>
+<li><a href="#videos">Videos</a></li>
+<li><a href="#values">Werte</a></li>
+<li><a href="#testimonials">Referenzen</a></li>
+</ul>
+</div>
+<div>
+<h4 class="footer-title">Kontakt</h4>
+<ul class="footer-links">
+<li><a href="#contact">Nachricht senden</a></li>
+<li><a href="mailto:kontakt@portfolio-erzieherin.de">E-Mail</a></li>
+<li><a href="tel:+491234567890">Telefon</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+© 2026 Portfolio · Erzieherin Ausbildung. Alle Rechte vorbehalten. Mit ❤️ erstellt.
+</div>
+</div>
+</footer>
+
+<script>
+// Header scroll effect
+(function(){
+var headerEl=document.getElementById('header');
+var lastScroll=0;
+window.addEventListener('scroll',function(){
+var currentScroll=window.pageYOffset;
+if(currentScroll>50){
+headerEl.classList.add('scrolled');
+}else{
+headerEl.classList.remove('scrolled');
+}
+lastScroll=currentScroll;
+});
+})();
+
+// Mobile menu
+(function(){
+var toggle=document.getElementById('menuToggle');
+var nav=document.getElementById('nav');
+toggle.addEventListener('click',function(){
+toggle.classList.toggle('active');
+nav.classList.toggle('active');
+});
+var links=nav.querySelectorAll('.nav-link');
+links.forEach(function(link){
+link.addEventListener('click',function(){
+toggle.classList.remove('active');
+nav.classList.remove('active');
+});
+});
+})();
+
+// Reveal on scroll
+(function(){
+var reveals=document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
+var observer=new IntersectionObserver(function(entries){
+entries.forEach(function(entry){
+if(entry.isIntersecting){
+entry.target.classList.add('active');
+}
+});
+},{threshold:0.12,rootMargin:'0px 0px -50px 0px'});
+reveals.forEach(function(el){
+observer.observe(el);
+});
+})();
+
+// Counter animation
+(function(){
+var counters=document.querySelectorAll('.counter');
+var counterObserver=new IntersectionObserver(function(entries){
+entries.forEach(function(entry){
+if(entry.isIntersecting){
+var el=entry.target;
+var target=parseInt(el.getAttribute('data-target'));
+var duration=2000;
+var start=0;
+var startTime=null;
+function animate(timestamp){
+if(!startTime)startTime=timestamp;
+var progress=Math.min((timestamp-startTime)/duration,1);
+var eased=1-Math.pow(1-progress,3);
+el.textContent=Math.floor(eased*target)+(target===100?'%':'+');
+if(progress<1){
+requestAnimationFrame(animate);
+}
+}
+requestAnimationFrame(animate);
+counterObserver.unobserve(el);
+}
+});
+},{threshold:0.5});
+counters.forEach(function(c){counterObserver.observe(c);});
+})();
+
+// Skill bars animation
+(function(){
+var skillBars=document.querySelectorAll('.skill-progress');
+var skillObserver=new IntersectionObserver(function(entries){
+entries.forEach(function(entry){
+if(entry.isIntersecting){
+var el=entry.target;
+var width=el.getAttribute('data-width');
+setTimeout(function(){
+el.style.width=width+'%';
+},200);
+skillObserver.unobserve(el);
+}
+});
+},{threshold:0.3});
+skillBars.forEach(function(bar){skillObserver.observe(bar);});
+})();
+
+// Language bars animation
+(function(){
+var langBars=document.querySelectorAll('.language-progress');
+var langObserver=new IntersectionObserver(function(entries){
+entries.forEach(function(entry){
+if(entry.isIntersecting){
+var el=entry.target;
+var width=el.getAttribute('data-width');
+setTimeout(function(){
+el.style.width=width+'%';
+},300);
+langObserver.unobserve(el);
+}
+});
+},{threshold:0.3});
+langBars.forEach(function(bar){langObserver.observe(bar);});
+})();
+
+// Contact form
+function handleSubmit(e){
+e.preventDefault();
+var btn=e.target.querySelector('button[type="submit"]');
+var originalText=btn.innerHTML;
+btn.innerHTML='✓ Nachricht gesendet!';
+btn.style.background='#10b981';
+setTimeout(function(){
+btn.innerHTML=originalText;
+btn.style.background='';
+e.target.reset();
+},3000);
+return false;
+}
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(function(anchor){
+anchor.addEventListener('click',function(e){
+var targetId=this.getAttribute('href');
+if(targetId.length>1){
+var target=document.querySelector(targetId);
+if(target){
+e.preventDefault();
+var headerHeight=document.getElementById('header').offsetHeight;
+var targetPosition=target.getBoundingClientRect().top+window.pageYOffset-headerHeight;
+window.scrollTo({top:targetPosition,behavior:'smooth'});
+}
+}
+});
+});
+</script>
+</body>
+</html>
+
